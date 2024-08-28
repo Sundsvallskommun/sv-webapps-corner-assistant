@@ -1,0 +1,42 @@
+{
+  "name": "sv-webapps-corner-assistant",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@sitevision/api": "^2024.4.2",
+    "@sitevision/sitevision-scripts": "^3.5.0",
+    "@sk-web-gui/ai": "^0.7.2",
+    "@sk-web-gui/react": "^1.2.27",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "cross-env": "^7.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^18.3.1",
+    "react-html-parser": "^2.0.2",
+    "zustand": "^4.5.4"
+  },
+  "scripts": {
+    "build": "yarn copybuild && sitevision-scripts build",
+    "create-addon": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 sitevision-scripts create-addon",
+    "deploy-prod": "sitevision-scripts deploy-prod",
+    "sign": "sitevision-scripts sign",
+    "dev": "yarn copybuild && cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 sitevision-scripts dev",
+    "setup-dev-properties": "sitevision-scripts setup-dev-properties",
+    "test": "sitevision-scripts test",
+    "copybuild": "node copybuild"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@sitevision/eslint-config-recommended",
+      "@sitevision/eslint-config-webapp-react",
+      "@sitevision/eslint-config-typescript"
+    ]
+  },
+  "prettier": {},
+  "plugins": [
+    "autoprefixer"
+  ],
+  "devDependencies": {
+    "@types/react-html-parser": "^2.0.6",
+    "copy-file": "^11.0.0"
+  }
+}

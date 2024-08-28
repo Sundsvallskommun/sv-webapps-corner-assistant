@@ -1,0 +1,64 @@
+@import "../preflight.css";
+@import "../coreBase.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sk-ai-module {
+  @apply z-[1000];
+
+  &-header {
+    --sk-colors-inverted-dark-primary: var(--sk-colors-header-text-primary);
+    --sk-colors-inverted-dark-secondary: var(--sk-colors-header-text-secondary);
+    --sk-colors-inverted-background-content: var(--sk-colors-header-background);
+  }
+  &[data-fullscreen="false"] {
+    @apply right-assistantright;
+    @apply bottom-assistantbottom;
+  }
+  &[data-fullscreen="true"] {
+    left: unset;
+    width: calc(
+      100vw - var(--sk-spacing-assistantleft) - var(--sk-spacing-assistantright)
+    ) !important;
+    @apply right-assistantright;
+    top: unset;
+    @apply bottom-assistantbottom;
+    height: calc(
+      100vh - var(--sk-spacing-assistanttop) - var(--sk-spacing-assistantbottom)
+    );
+  }
+}
+
+.sk-ai-bubble,
+.sk-ai-bubble[data-color="vattjom"] {
+  @apply bg-bubble-surface hover:bg-bubble-surface-hover text-bubble-text;
+  .sk-ai-bubble-tail {
+    @apply shadow-bubble-surface;
+  }
+  &:hover {
+    .sk-ai-bubble-tail {
+      @apply shadow-bubble-surface-hover;
+    }
+  }
+}
+
+.sk-ai-markdown {
+  word-break: break-word;
+}
+
+.sk-ai-assistant-presentation-header-title {
+  @apply font-header;
+}
+
+.sk-ai-module-header[data-fullscreen="false"] .sk-ai-module-header-menu {
+  .sk-btn[role="menuitem"] {
+    @apply bg-menu-background hover:bg-menu-background-hover text-menu-foreground;
+  }
+}
+
+.sk-ai-module-header {
+  .sk-btn.sk-btn-primary:not([role="menuitem"]) {
+    @apply bg-newquest-surface hover:bg-newquest-surface-hover text-newquest-text hover:text-newquest-text-hover active:bg-newquest-surface-hover;
+  }
+}

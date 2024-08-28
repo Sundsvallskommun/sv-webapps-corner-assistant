@@ -1,0 +1,49 @@
+{
+  "name": "cornerassistant",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && yarn copybuild",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "copybuild": "node copybuild"
+  },
+  "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@sk-web-gui/ai": "^0.7.2",
+    "@sk-web-gui/core": "^3.5.0",
+    "@sk-web-gui/react": "^1.2.27",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/node": "^20.10.5",
+    "dayjs": "^1.11.10",
+    "lodash.debounce": "^4.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "regenerator-runtime": "^0.14.1",
+    "sanitize-html": "^2.12.1",
+    "usehooks-ts": "^3.1.0",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "copy-file": "^11.0.0",
+    "cssnano": "^7.0.5",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.13"
+  }
+}
