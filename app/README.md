@@ -16,5 +16,5 @@ To start the development server, run `yarn dev --mode=MY_ASSISTANT` so that the 
 
 - Deployment
 
-To build for production, run `yarn build --mode==MY_ASSISTANT` in order to build using the corresponding config.
+To build for production, run `yarn build` in order to build.
 This will copy the build to the sitevision webapp source.
