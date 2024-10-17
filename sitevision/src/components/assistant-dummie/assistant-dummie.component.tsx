@@ -1,4 +1,4 @@
-import { AIModuleHeader, type AssistantInfo } from "@sk-web-gui/ai";
+import { AICornerModuleHeader, type AssistantInfo } from "@sk-web-gui/ai";
 import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import { Avatar } from "@sk-web-gui/react";
@@ -135,7 +135,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
 
   return (
     <div
-      className={styles["sk-ai-module"]}
+      className={styles["sk-ai-corner-module"]}
       data-fullscren={false}
       data-docked={true}
       style={{
@@ -145,10 +145,10 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
         fontSize: `${options?.fontbase ? (16 / options.fontbase) * 16 : 16}px`,
       }}
     >
-      <div className="sk-ai-module-content">
-        <div className="sk-ai-module-content-row sk-ai-module-content-row-main">
+      <div className="sk-ai-corner-module-content">
+        <div className="sk-ai-corner-module-content-row sk-ai-corner-module-content-row-main">
           {isClient && (
-            <AIModuleHeader
+            <AICornerModuleHeader
               assistant={assistant}
               fullscreen={false}
               docked={true}

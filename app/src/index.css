@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.sk-ai-module {
+.sk-ai-corner-module {
   @apply z-[1000];
 
   &-header {
@@ -51,13 +51,14 @@
   @apply font-header;
 }
 
-.sk-ai-module-header[data-fullscreen="false"] .sk-ai-module-header-menu {
+.sk-ai-corner-module-header[data-fullscreen="false"]
+  .sk-ai-corner-module-header-menu {
   .sk-btn[role="menuitem"] {
     @apply bg-menu-background hover:bg-menu-background-hover text-menu-foreground;
   }
 }
 
-.sk-ai-module-header {
+.sk-ai-corner-module-header {
   .sk-btn.sk-btn-primary:not([role="menuitem"]) {
     @apply bg-newquest-surface hover:bg-newquest-surface-hover text-newquest-text hover:text-newquest-text-hover active:bg-newquest-surface-hover;
   }

@@ -12,7 +12,7 @@ export const ClientApp: React.FC<ClientAppProps> = ({
   ...rest
 }) => {
   return isEditing ? (
-    <ServerSideApp assistant={assistant} options={rest.settings.options} />
+    <ServerSideApp assistant={assistant} options={rest.options} />
   ) : (
     <Assistant assistant={assistant} {...rest} />
   );
