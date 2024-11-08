@@ -5,20 +5,25 @@ import type { Options } from "../assistant-dummie/assistant-dummie.component";
 
 export interface AssistantProps {
   assistant: AssistantInfo;
-  settings: AssistantSettings & {
-    options: Options;
-  };
+  settings: AssistantSettings;
   shadowdom?: boolean;
+  options: Options;
 }
 
 export const Assistant: React.FunctionComponent<AssistantProps> = ({
   assistant,
   settings,
   shadowdom = true,
+  options,
 }) => {
-  const [oldInfo, setInfo, oldSettings, setSettings] = useAssistantStore(
-    (state) => [state.info, state.setInfo, state.settings, state.setSettings]
-  );
+  const [oldInfo, setInfo, oldSettings, setSettings, setOptions] =
+    useAssistantStore((state) => [
+      state.info,
+      state.setInfo,
+      state.settings,
+      state.setSettings,
+      state.setOptions,
+    ]);
 
   React.useEffect(() => {
     require("../../../assets/assistant-corner");
@@ -32,6 +37,10 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     };
     setInfo(info);
   }, [assistant, setInfo, oldInfo]);
+
+  React.useEffect(() => {
+    setOptions(options);
+  }, [setOptions, options]);
 
   React.useEffect(() => {
     if (settings) {

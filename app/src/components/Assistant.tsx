@@ -1,9 +1,9 @@
-import { AIModule, useAssistantStore } from "@sk-web-gui/ai";
+import { AICornerModule, useAssistantStore } from "@sk-web-gui/ai";
 import { Avatar } from "@sk-web-gui/react";
 import { useMediaQuery } from "usehooks-ts";
 
 export const Assistant: React.FC = () => {
-  const { options } = useAssistantStore((state) => state.settings);
+  const options = useAssistantStore((state) => state.options);
   const info = useAssistantStore((state) => state.info);
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
@@ -37,7 +37,7 @@ export const Assistant: React.FC = () => {
   );
 
   return (
-    <AIModule
+    <AICornerModule
       isMobile={isMobile}
       questions={options?.questions}
       questionsTitle={options?.questionsTitle}

@@ -224,7 +224,6 @@ router.get("/", (req, res) => {
     app,
     stream,
     hash,
-    options,
   };
 
   res.agnosticRender(
@@ -234,6 +233,7 @@ router.get("/", (req, res) => {
       settings,
       shadowdom,
       isEditing,
+      options,
     }
   );
 });
