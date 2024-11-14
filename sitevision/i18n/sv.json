@@ -21,7 +21,7 @@
   "show_history": "Visa tidigare frågor",
   "allow_fullscreen": "Tillåt att assistenten öppnas i fullskärmsläge",
   "styling": "Utseende",
-
+  "css": "CSS",
   "name": "Namn",
   "title": "Titel",
   "avatar": "Avatar",
@@ -33,7 +33,7 @@
   "font_header": "Rubriktypsnitt",
   "font_family": "Typsnitt",
   "base_font_size": "Basfontstorlek",
-
+  "colorscheme": "Färgläge",
   "colors": "Färger",
   "black": "Svart",
   "header": "Sidhuvud",
@@ -47,6 +47,7 @@
 
   "lightmode": "Ljust färgläge (Light mode)",
   "darkmode": "Mörkt färgläge (Dark mode)",
+  "follow_system": "Följ användarens inställningar",
 
   "use_from_theme": "Använd från temat",
   "use_from_app": "Använd appens standard",

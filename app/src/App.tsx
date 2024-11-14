@@ -5,7 +5,12 @@ import {
   useAssistantStore,
   useSessions,
 } from "@sk-web-gui/ai";
-import { defaultTheme, extendTheme, GuiProvider } from "@sk-web-gui/react";
+import {
+  ColorSchemeMode,
+  defaultTheme,
+  extendTheme,
+  GuiProvider,
+} from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
 
@@ -84,6 +89,21 @@ function App({
       return "0px";
     }
   };
+
+  useEffect(() => {
+    if (options?.css) {
+      const rootElement = document.getElementById("sk-corner-assistant");
+      const isShadow = rootElement.getAttribute("data-shadow") === "true";
+      const firstChild = rootElement.firstChild as HTMLElement;
+
+      const styleroot = isShadow ? firstChild?.shadowRoot : firstChild;
+
+      const style = document?.createElement("style");
+      style.textContent = options.css;
+      styleroot?.insertBefore(style, styleroot.lastChild);
+      styleroot?.appendChild(style);
+    }
+  }, [options?.css]);
 
   const theme = useMemo(
     () =>
@@ -287,6 +307,7 @@ function App({
     <GuiProvider
       theme={theme}
       htmlFontSize={import.meta.env.DEV ? 10 : options?.fontbase || 16}
+      colorScheme={options?.colorscheme || ColorSchemeMode.System}
     >
       <Suspense fallback="loading">{loaded && <Assistant />}</Suspense>
     </GuiProvider>

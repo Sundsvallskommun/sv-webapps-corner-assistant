@@ -895,4 +895,63 @@
       </div>
     </div>
   </div>
+
+  <!-- Dark mode -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-target="#styling-colorscheme"
+      data-parent="#styling-accordion"
+      ><h3 class="panel-title"><%= i18n('colorscheme') %></h3>
+    </a>
+    <div class="panel-collapse" id="styling-colorscheme">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <fieldset class="form-group">
+              <legend><%= i18n('colorscheme') %></legend>
+              <label>
+                <input type="radio" name="colorscheme" value="system" />
+                <%= i18n('follow_system') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="light" />
+                <%= i18n('lightmode') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="dark" />
+                <%= i18n('darkmode') %>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-parent="#styling-accordion"
+      data-target="#styling-css"
+      ><h3 class="panel-title"><%= i18n('css') %></h3>
+    </a>
+    <div class="panel-collapse" id="styling-css">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label><%= i18n('css') %></label>
+              <textarea class="form-control" name="css" rows="10"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

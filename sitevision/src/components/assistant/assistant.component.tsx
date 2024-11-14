@@ -8,6 +8,8 @@ export interface AssistantProps {
   settings: AssistantSettings;
   shadowdom?: boolean;
   options: Options;
+  apiBaseUrl: string;
+  stream: boolean;
 }
 
 export const Assistant: React.FunctionComponent<AssistantProps> = ({
@@ -15,15 +17,26 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   settings,
   shadowdom = true,
   options,
+  stream,
+  apiBaseUrl,
 }) => {
-  const [oldInfo, setInfo, oldSettings, setSettings, setOptions] =
-    useAssistantStore((state) => [
-      state.info,
-      state.setInfo,
-      state.settings,
-      state.setSettings,
-      state.setOptions,
-    ]);
+  const [
+    oldInfo,
+    setInfo,
+    oldSettings,
+    setSettings,
+    setOptions,
+    setStream,
+    setApiBaseUrl,
+  ] = useAssistantStore((state) => [
+    state.info,
+    state.setInfo,
+    state.settings,
+    state.setSettings,
+    state.setOptions,
+    state.setStream,
+    state.setApiBaseUrl,
+  ]);
 
   React.useEffect(() => {
     require("../../../assets/assistant-corner");
@@ -41,6 +54,14 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   React.useEffect(() => {
     setOptions(options);
   }, [setOptions, options]);
+
+  React.useEffect(() => {
+    setStream(stream);
+  }, [stream, setStream]);
+
+  React.useEffect(() => {
+    setApiBaseUrl(apiBaseUrl);
+  }, [apiBaseUrl, setApiBaseUrl]);
 
   React.useEffect(() => {
     if (settings) {

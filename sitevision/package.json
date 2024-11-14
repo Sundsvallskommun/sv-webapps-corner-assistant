@@ -1,6 +1,6 @@
 {
   "name": "sv-webapps-corner-assistant",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "dependencies": {
     "@sitevision/api": "^2024.4.2",
