@@ -9,6 +9,7 @@ interface Color {
   dark: string;
 }
 export interface Options {
+  css?: string;
   fontface: Record<string, string>;
   colors: {
     header?: {
@@ -134,30 +135,32 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   );
 
   return (
-    <div
-      className={styles["sk-ai-corner-module"]}
-      data-fullscren={false}
-      data-docked={true}
-      style={{
-        fontFamily: options.fontface.DEFAULT,
-        bottom: options.positions.bottom || "0px",
-        right: options.positions.right || "0px",
-        fontSize: `${options?.fontbase ? (16 / options.fontbase) * 16 : 16}px`,
-      }}
-    >
-      <div className="sk-ai-corner-module-content">
-        <div className="sk-ai-corner-module-content-row sk-ai-corner-module-content-row-main">
-          {isClient && (
-            <AICornerModuleHeader
-              assistant={assistant}
-              fullscreen={false}
-              docked={true}
-              style={headerstyle}
-              title={options?.title}
-              subtitle={options?.subtitle}
-              avatar={avatar}
-            />
-          )}
+    <div>
+      {options?.css && <style>{options.css}</style>}
+      <div
+        className={styles["sk-ai-corner-module"]}
+        data-fullscren={false}
+        data-docked={true}
+        style={{
+          fontFamily: options.fontface.DEFAULT,
+          bottom: options.positions.bottom || "0px",
+          right: options.positions.right || "0px",
+        }}
+      >
+        <div className="sk-ai-corner-module-content">
+          <div className="sk-ai-corner-module-content-row sk-ai-corner-module-content-row-main">
+            {isClient && (
+              <AICornerModuleHeader
+                assistant={assistant}
+                fullscreen={false}
+                docked={true}
+                style={headerstyle}
+                title={options?.title}
+                subtitle={options?.subtitle}
+                avatar={avatar}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

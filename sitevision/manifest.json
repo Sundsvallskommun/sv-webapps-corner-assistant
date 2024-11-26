@@ -1,6 +1,6 @@
 {
   "id": "sv-web-apps-corner-assistant",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "name": {
     "en": "Corner assistant"
   },
@@ -8,7 +8,7 @@
   "description": {
     "en": "Sundsvalls kommun AI corner assistant"
   },
-  "helpUrl": "https://example.com/webapps",
+  "helpUrl": "https://github.com/Sundsvallskommun/sv-webapps-corner-assistant/tree/main/sitevision",
   "type": "WebApp",
   "bundled": true,
   "maxUploadSizeInMB": 0,

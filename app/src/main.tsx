@@ -59,10 +59,20 @@ const container = document?.getElementById("sk-corner-assistant");
 
 if (container) {
   if (container.getAttribute("data-shadow") === "false") {
-    container.setAttribute("class", "sk-cornerroot");
-    container.setAttribute("id", "sk-cornerroot");
+    const rootElement = document?.createElement("div");
+    rootElement.setAttribute("id", "sk-cornerroot");
 
-    initializeReactApp(container, container);
+    // create variable to attach the tailwind stylesheet
+    const style = document?.createElement("style");
+
+    // attach the stylesheet as text
+    style.textContent = css;
+
+    // apply the style
+    container.appendChild(style);
+    container.appendChild(rootElement);
+
+    initializeReactApp(container, rootElement);
   } else {
     customElements.define("corner-assistant-shadow", CustomAppComponent);
     container.appendChild(document?.createElement("corner-assistant-shadow"));

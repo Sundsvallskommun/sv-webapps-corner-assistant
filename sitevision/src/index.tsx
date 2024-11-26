@@ -11,9 +11,10 @@ import ReactHtmlParser from "react-html-parser";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
 import { getHash } from "./utils/hash.service";
 import type { DefaultColor } from "./common/defaultColors";
+import globalAppData from "@sitevision/api/server/globalAppData";
 
 router.get("/", (req, res) => {
-  const salt = appData.get("salt") as string;
+  const salt = globalAppData.get("salt") as string;
   const avatar = appData.getNode("assistant_avatar");
   const avatarRender = imageRenderer;
   avatarRender.setImage(avatar);
@@ -171,6 +172,7 @@ router.get("/", (req, res) => {
   };
 
   const useTitles: boolean = appData.get("header_titles") === "custom";
+  const css = appData.get("css") as string;
 
   const options = {
     fontface: {
@@ -198,6 +200,8 @@ router.get("/", (req, res) => {
       ? (appData.get("header_subtitle") as string)
       : undefined,
     fontbase,
+    css,
+    colorscheme: appData.get("colorscheme"),
   };
 
   const viewMode = versionUtil.getCurrentVersion();
@@ -216,13 +220,11 @@ router.get("/", (req, res) => {
   const app = appData.get("app") as string;
   const stream = appData.get("stream") as boolean;
   const hash = getHash(username, assistantId, app, salt);
-
   const settings = {
-    apiBaseUrl: appData.get("server_url") as string,
     user: username,
     assistantId,
     app,
-    stream,
+
     hash,
   };
 
@@ -234,6 +236,8 @@ router.get("/", (req, res) => {
       shadowdom,
       isEditing,
       options,
+      apiBaseUrl: appData.get("server_url") as string,
+      stream,
     }
   );
 });
