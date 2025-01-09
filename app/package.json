@@ -1,7 +1,7 @@
 {
   "name": "cornerassistant",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
-    "@sk-web-gui/ai": "^0.10.1",
-    "@sk-web-gui/core": "^3.8.0",
-    "@sk-web-gui/react": "^1.2.32",
+    "@sk-web-gui/ai": "^0.10.3",
+    "@sk-web-gui/core": "^3.9.1",
+    "@sk-web-gui/react": "^1.2.36",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20.10.5",
@@ -23,6 +23,7 @@
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.54.2",
     "react-markdown": "^9.0.1",
     "regenerator-runtime": "^0.14.1",
     "sanitize-html": "^2.12.1",

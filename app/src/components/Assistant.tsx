@@ -1,13 +1,18 @@
-import { AICornerModule, useAssistantStore } from "@sk-web-gui/ai";
+import { AICornerModule, useAssistantStore, useChat } from "@sk-web-gui/ai";
 import { Avatar } from "@sk-web-gui/react";
+import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { useAppSessions } from "../services/useAppSessions";
 
 export const Assistant: React.FC = () => {
-  const options = useAssistantStore((state) => state.options);
+  const [options] = useAssistantStore((state) => [state.options]);
   const info = useAssistantStore((state) => state.info);
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
   );
+
+  const appSessionId = options?.appSessionId || "default";
+  const { sessionId, setSessionId } = useAppSessions(appSessionId);
 
   const userAvatar = (
     <Avatar
@@ -36,8 +41,28 @@ export const Assistant: React.FC = () => {
     assistantAvatar
   );
 
+  useEffect(() => {
+    if (!options?.rememberSession || !sessionId) {
+      setSessionId("");
+    }
+    //eslint-disable-next-line
+  }, []);
+
+  const { session, sendQuery, newSession } = useChat({ sessionId });
+
+  useEffect(() => {
+    if (session?.id && session.id !== sessionId) {
+      setSessionId(session.id);
+    }
+    //eslint-disable-next-line
+  }, [session?.id]);
+
   return (
     <AICornerModule
+      onSendQuery={sendQuery}
+      onNewSession={newSession}
+      onChangeSession={setSessionId}
+      session={session}
       isMobile={isMobile}
       questions={options?.questions}
       questionsTitle={options?.questionsTitle}

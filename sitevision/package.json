@@ -1,16 +1,17 @@
 {
   "name": "sv-webapps-corner-assistant",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "module",
   "dependencies": {
     "@sitevision/api": "^2024.4.2",
     "@sitevision/sitevision-scripts": "^3.5.0",
-    "@sk-web-gui/ai": "^0.10.0",
-    "@sk-web-gui/react": "^1.2.31",
+    "@sk-web-gui/ai": "^0.10.3",
+    "@sk-web-gui/react": "^1.2.36",
     "@tailwindcss/container-queries": "^0.1.1",
     "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
     "react-html-parser": "^2.0.2",
     "zustand": "^4.5.4"
   },

@@ -41,6 +41,7 @@ export interface Options {
   title?: string;
   subtitle?: string;
   fontbase?: number;
+  appSessionId?: string;
 }
 
 interface AssistantDummieProps {

@@ -202,6 +202,8 @@ router.get("/", (req, res) => {
     fontbase,
     css,
     colorscheme: appData.get("colorscheme"),
+    rememberSession: appData.get("remember_session") as boolean,
+    appSessionId: appData.get("app_session_id") as string,
   };
 
   const viewMode = versionUtil.getCurrentVersion();
@@ -224,7 +226,6 @@ router.get("/", (req, res) => {
     user: username,
     assistantId,
     app,
-
     hash,
   };
 
