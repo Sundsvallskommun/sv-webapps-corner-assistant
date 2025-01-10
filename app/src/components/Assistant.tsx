@@ -10,8 +10,10 @@ export const Assistant: React.FC = () => {
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
   );
-
-  const appSessionId = options?.appSessionId || "default";
+  const rememberSession = options?.rememberSession || false;
+  const appSessionId = rememberSession
+    ? options?.appSessionId || "default"
+    : "__dont_remember";
   const { sessionId, setSessionId } = useAppSessions(appSessionId);
 
   const userAvatar = (
@@ -42,7 +44,7 @@ export const Assistant: React.FC = () => {
   );
 
   useEffect(() => {
-    if (!options?.rememberSession || !sessionId) {
+    if (!rememberSession) {
       setSessionId("");
     }
     //eslint-disable-next-line
