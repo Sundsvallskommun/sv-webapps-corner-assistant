@@ -5,15 +5,18 @@ import { useMediaQuery } from "usehooks-ts";
 import { useAppSessions } from "../services/useAppSessions";
 
 export const Assistant: React.FC = () => {
-  const [options] = useAssistantStore((state) => [state.options]);
+  const [options, settings] = useAssistantStore((state) => [
+    state.options,
+    state.settings,
+  ]);
   const info = useAssistantStore((state) => state.info);
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
   );
   const rememberSession = options?.rememberSession || false;
-  const appSessionId = rememberSession
-    ? options?.appSessionId || "default"
-    : "__dont_remember";
+  const appSessionId =
+    settings?.app +
+    (rememberSession ? options?.appSessionId || "default" : "__dont_remember");
   const { sessionId, setSessionId } = useAppSessions(appSessionId);
 
   const userAvatar = (
