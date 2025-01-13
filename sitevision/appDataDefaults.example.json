@@ -46,7 +46,9 @@
     "header_newquest_color": "vattjom",
     "fontbase": 16,
     "mobile_breakpoint": 1023,
-    "mobile_breakpoint_unit": "px"
+    "mobile_breakpoint_unit": "px",
+    "remember_session": false,
+    "app_session_id": "1"
   },
   "globalAppData": {
     "salt": ""

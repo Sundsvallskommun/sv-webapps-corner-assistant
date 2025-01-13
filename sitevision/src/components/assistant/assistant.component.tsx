@@ -25,6 +25,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     setInfo,
     oldSettings,
     setSettings,
+    oldOptions,
     setOptions,
     setStream,
     setApiBaseUrl,
@@ -33,6 +34,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     state.setInfo,
     state.settings,
     state.setSettings,
+    state.options,
     state.setOptions,
     state.setStream,
     state.setApiBaseUrl,
@@ -52,7 +54,8 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   }, [assistant, setInfo, oldInfo]);
 
   React.useEffect(() => {
-    setOptions(options);
+    setOptions({ ...oldOptions, ...options });
+    //eslint-disable-next-line
   }, [setOptions, options]);
 
   React.useEffect(() => {

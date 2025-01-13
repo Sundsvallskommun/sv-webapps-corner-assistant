@@ -3,7 +3,6 @@ import {
   AssistantSettings,
   setAssistantStoreName,
   useAssistantStore,
-  useSessions,
 } from "@sk-web-gui/ai";
 import {
   ColorSchemeMode,
@@ -32,7 +31,6 @@ function App({
       state.setStream,
       state.options,
     ]);
-  const newSession = useSessions((state) => state.newSession);
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -77,9 +75,8 @@ function App({
       setInfo(info);
     }
 
-    newSession();
     setLoaded(true);
-  }, [user, hash, assistantId, setSettings, setInfo, newSession]);
+  }, [user, hash, assistantId, setSettings, setInfo, setStream, setApiBaseUrl]);
 
   const getPosition = (position: string) => {
     const incomingPosition = options?.positions?.[position];

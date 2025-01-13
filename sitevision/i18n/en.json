@@ -5,6 +5,8 @@
   "assistant_id": "Assistant ID",
   "app": "Application",
   "server_url": "Url to AI server",
+  "remember_session": "Keep session alive",
+  "app_session_id": "Session name",
   "user_info": "User information",
   "user_info_description": "How the user will be presented i the chat feed",
   "system_info": "System user information",

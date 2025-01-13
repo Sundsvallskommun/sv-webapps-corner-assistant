@@ -5,6 +5,8 @@
   "assistant_id": "Assistentens ID",
   "app": "Applikation",
   "server_url": "Url till AI-server",
+  "remember_session": "Behåll session vid navigering",
+  "app_session_id": "Sessionsnamn",
   "user_info": "Användarinformation",
   "user_info_description": "Ställ in hur användaren presenteras i chatflödet",
   "system_info": "Systemanvädarinformation",
