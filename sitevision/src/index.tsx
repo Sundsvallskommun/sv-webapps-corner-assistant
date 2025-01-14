@@ -46,9 +46,9 @@ router.get("/", (req, res) => {
 
   const showHistory = appData.get("show_history") as boolean;
 
-  const mobileBreakpoint = `${appData.get("mobile_breakpoint")}${appData.get(
-    "mobile_breakpoint_unit"
-  )}`;
+  const mobileBreakpoint = `${globalAppData.get(
+    "mobile_breakpoint"
+  )}${globalAppData.get("mobile_breakpoint_unit")}`;
 
   const assistantOptions = {
     color: appData.get("assistant_avatar_color") as DefaultColor,
@@ -85,17 +85,21 @@ router.get("/", (req, res) => {
       : undefined;
 
   const positions = {
-    top: `${appData.get("position_top")}${appData.get("position_top_unit")}`,
-    bottom: `${appData.get("position_bottom")}${appData.get(
+    top: `${globalAppData.get("position_top")}${globalAppData.get(
+      "position_top_unit"
+    )}`,
+    bottom: `${globalAppData.get("position_bottom")}${globalAppData.get(
       "position_bottom_unit"
     )}`,
-    left: `${appData.get("position_left")}${appData.get("position_left_unit")}`,
-    right: `${appData.get("position_right")}${appData.get(
+    left: `${globalAppData.get("position_left")}${globalAppData.get(
+      "position_left_unit"
+    )}`,
+    right: `${globalAppData.get("position_right")}${globalAppData.get(
       "position_right_unit"
     )}`,
   };
 
-  const fontbase = parseFloat(appData.get("fontbase") as string);
+  const fontbase = parseFloat(globalAppData.get("fontbase") as string);
 
   const newquest = { color: appData.get("header_newquest_color") as string };
 
@@ -138,52 +142,52 @@ router.get("/", (req, res) => {
   };
 
   const bubble = {
-    color: appData.get("color_bubble") as string,
+    color: globalAppData.get("color_bubble") as string,
     surface: {
       light: properties.get(
-        appData.get("color_bubble_surface_light"),
+        globalAppData.get("color_bubble_surface_light"),
         "htmlHexValue"
       ) as string,
       dark: properties.get(
-        appData.get("color_bubble_surface_dark"),
+        globalAppData.get("color_bubble_surface_dark"),
         "htmlHexValue"
       ) as string,
     },
     "surface-hover": {
       light: properties.get(
-        appData.get("color_bubble_surface_hover_light"),
+        globalAppData.get("color_bubble_surface_hover_light"),
         "htmlHexValue"
       ) as string,
       dark: properties.get(
-        appData.get("color_bubble_surface_hover_dark"),
+        globalAppData.get("color_bubble_surface_hover_dark"),
         "htmlHexValue"
       ) as string,
     },
     text: {
       light: properties.get(
-        appData.get("color_bubble_text_light"),
+        globalAppData.get("color_bubble_text_light"),
         "htmlHexValue"
       ) as string,
       dark: properties.get(
-        appData.get("color_bubble_text_dark"),
+        globalAppData.get("color_bubble_text_dark"),
         "htmlHexValue"
       ) as string,
     },
   };
 
   const useTitles: boolean = appData.get("header_titles") === "custom";
-  const css = appData.get("css") as string;
+  const css = `${globalAppData.get("css")} ${appData.get("css")}`;
 
   const options = {
     fontface: {
       DEFAULT:
-        appData.get("font_default") === "theme"
+        globalAppData.get("font_default") === "theme"
           ? "var(--env-font-family)"
-          : (appData.get("font_default_value") as string),
+          : (globalAppData.get("font_default_value") as string),
       header:
-        appData.get("font_header") === "theme"
+        globalAppData.get("font_header") === "theme"
           ? "var(--env-font-family)"
-          : (appData.get("font_header_value") as string),
+          : (globalAppData.get("font_header_value") as string),
     },
     disableFullscreen: !appData.get("allow_fullscreen"),
     questions,
@@ -201,7 +205,7 @@ router.get("/", (req, res) => {
       : undefined,
     fontbase,
     css,
-    colorscheme: appData.get("colorscheme"),
+    colorscheme: globalAppData.get("colorscheme"),
     rememberSession: appData.get("remember_session") as boolean,
     appSessionId: appData.get("app_session_id") as string,
   };
@@ -209,9 +213,9 @@ router.get("/", (req, res) => {
   const viewMode = versionUtil.getCurrentVersion();
   const isEditing = viewMode === versionUtil.OFFLINE_VERSION;
 
-  const shadowdom = appData.get("shadowdom") as boolean;
+  const shadowdom = globalAppData.get("shadowdom") as boolean;
 
-  const useUser = appData.get("use_user") as boolean;
+  const useUser = globalAppData.get("use_user") as boolean;
   const currentUser = portletContextUtil.getCurrentUser();
 
   const username = useUser
@@ -220,7 +224,7 @@ router.get("/", (req, res) => {
 
   const assistantId = appData.get("assistantId") as string;
   const app = appData.get("app") as string;
-  const stream = appData.get("stream") as boolean;
+  const stream = globalAppData.get("stream") as boolean;
   const hash = getHash(username, assistantId, app, salt);
   const settings = {
     user: username,
@@ -237,7 +241,7 @@ router.get("/", (req, res) => {
       shadowdom,
       isEditing,
       options,
-      apiBaseUrl: appData.get("server_url") as string,
+      apiBaseUrl: globalAppData.get("server_url") as string,
       stream,
     }
   );

@@ -1,6 +1,7 @@
 {
   "settings": "Inställningar",
   "advanced": "Avancerat",
+  "assistant": "Assistent",
   "user": "Användare",
   "assistant_id": "Assistentens ID",
   "app": "Applikation",
@@ -27,6 +28,7 @@
   "name": "Namn",
   "title": "Titel",
   "avatar": "Avatar",
+  "global": "Globala inställningar",
 
   "users": "Användare",
 
