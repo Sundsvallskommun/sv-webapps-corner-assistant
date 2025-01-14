@@ -51,11 +51,12 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
       ...assistant,
     };
     setInfo(info);
-  }, [assistant, setInfo, oldInfo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assistant, setInfo]);
 
   React.useEffect(() => {
     setOptions({ ...oldOptions, ...options });
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setOptions, options]);
 
   React.useEffect(() => {
@@ -74,7 +75,9 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
       };
       setSettings(newSettings);
     }
-  }, [settings, setSettings, oldSettings]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings, setSettings]);
 
   return (
     <div>
