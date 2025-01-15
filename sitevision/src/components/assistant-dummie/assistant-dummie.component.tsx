@@ -1,4 +1,8 @@
-import { AICornerModuleHeader, type AssistantInfo } from "@sk-web-gui/ai";
+import {
+  AICornerModuleHeader,
+  type AICornerModule,
+  type AssistantInfo,
+} from "@sk-web-gui/ai";
 import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import { Avatar } from "@sk-web-gui/react";
@@ -42,6 +46,7 @@ export interface Options {
   subtitle?: string;
   fontbase?: number;
   appSessionId?: string;
+  readmore?: React.ComponentProps<typeof AICornerModule>["readmore"];
 }
 
 interface AssistantDummieProps {

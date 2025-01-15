@@ -17,8 +17,7 @@
     "system_initials": "AI",
     "system_avatar_color": "vattjom",
     "system_show_title": false,
-    "color_header": "black",
-    "color_bubble": "vattjom",
+
     "use_questions": false,
     "questions_title": "Vad kan jag hjälpa dig med?",
     "questions_count": 3,
@@ -29,7 +28,9 @@
     "header_buttons": "light",
     "header_newquest_color": "vattjom",
     "remember_session": false,
-    "app_session_id": "1"
+    "app_session_id": "1",
+    "readmore_description": "",
+    "readmore_url": ""
   },
   "globalAppData": {
     "salt": "",
@@ -52,6 +53,8 @@
     "font_default_value": "Arial, Helvetica, sans-serif",
     "font_header": "other",
     "font_header_value": "Raleway, Arial, Helvetica, sans-serif",
-    "fontbase": 16
+    "fontbase": 16,
+    "color_header": "black",
+    "color_bubble": "vattjom"
   }
 }
