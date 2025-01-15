@@ -1,6 +1,7 @@
 {
   "settings": "Settings",
   "advanced": "Advanced",
+  "assistant": "Assistant",
   "user": "User",
   "assistant_id": "Assistant ID",
   "app": "Application",
@@ -27,6 +28,10 @@
   "name": "Name",
   "title": "Title",
   "avatar": "Avatar",
+  "global": "Global settings",
+  "readmore": "'Read more'-link",
+  "readmore_url": "Link (url)",
+  "readmore_description": "Link text",
 
   "users": "Users",
 

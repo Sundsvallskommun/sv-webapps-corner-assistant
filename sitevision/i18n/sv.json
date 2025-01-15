@@ -1,6 +1,7 @@
 {
   "settings": "Inställningar",
   "advanced": "Avancerat",
+  "assistant": "Assistent",
   "user": "Användare",
   "assistant_id": "Assistentens ID",
   "app": "Applikation",
@@ -27,6 +28,10 @@
   "name": "Namn",
   "title": "Titel",
   "avatar": "Avatar",
+  "global": "Globala inställningar",
+  "readmore": "'Läs mer'-länk",
+  "readmore_url": "Länk (url)",
+  "readmore_description": "Länktext",
 
   "users": "Användare",
 

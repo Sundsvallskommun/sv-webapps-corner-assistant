@@ -75,6 +75,7 @@ export const Assistant: React.FC = () => {
       title={options?.title}
       subtitle={options?.subtitle}
       disableFullscreen={options?.disableFullscreen}
+      readmore={options?.readmore}
       avatars={{
         user: userAvatar,
         assistant: assistantAvatar,
