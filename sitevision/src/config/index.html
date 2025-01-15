@@ -282,14 +282,57 @@
   </div>
 </div>
 
-<!-- FÖRDEFINIERADE FRÅGOR -->
-<div class="panel-group">
+<div class="panel-group" id="editorial" data-accordion>
+  <!-- Sidhuvud -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-parent="#editorial"
+      data-target="#editorial-header"
+      ><h3 class="panel-title"><%= i18n('header') %></h3>
+    </a>
+    <div class="panel-collapse" id="editorial-header">
+      <div class="panel-body">
+        <fieldset class="form-group">
+          <legend><%= i18n('headings') %></legend>
+          <label>
+            <input type="radio" name="header_titles" value="assistant" />
+            <%= i18n('use_assistant_titles') %>
+          </label>
+          <label>
+            <input
+              type="radio"
+              data-enables="#header-titles-values"
+              name="header_titles"
+              value="custom"
+            />
+            <%= i18n('use_custom') %>
+          </label>
+        </fieldset>
+        <div id="header-titles-values">
+          <div class="form-group">
+            <label><%= i18n('heading') %></label>
+            <input class="form-control" name="header_title" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('subheading') %></label>
+            <input class="form-control" name="header_subtitle" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FÖRDEFINIERADE FRÅGOR -->
   <div class="panel panel-default">
     <a
       class="panel-heading collapsed"
       role="button"
       data-toggle="collapse"
       data-target="#pre-defined-question-panel"
+      data-parent="#editorial"
     >
       <h3 class="panel-title"><%= i18n('pre_defined_questions') %></h3>
     </a>
@@ -352,167 +395,35 @@
       </div>
     </div>
   </div>
-</div>
 
-<!-- UTSEENDE -->
-<div class="panel-group" id="styling-accordion" data-accordion>
-  <!-- Sidhuvud -->
+  <!-- LÄS MER -->
   <div class="panel panel-default">
     <a
       class="panel-heading collapsed"
       role="button"
       data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-header"
-      ><h3 class="panel-title"><%= i18n('header') %></h3>
+      data-target="#assistant-readmore"
+      data-parent="#editorial"
+    >
+      <h3 class="panel-title"><%= i18n('readmore') %></h3>
     </a>
-    <div class="panel-collapse" id="styling-header">
+    <div class="panel-collapse" id="assistant-readmore">
       <div class="panel-body">
-        <fieldset class="form-group">
-          <legend><%= i18n('headings') %></legend>
-          <label>
-            <input type="radio" name="header_titles" value="assistant" />
-            <%= i18n('use_assistant_titles') %>
-          </label>
-          <label>
-            <input
-              type="radio"
-              data-enables="#header-titles-values"
-              name="header_titles"
-              value="custom"
-            />
-            <%= i18n('use_custom') %>
-          </label>
-        </fieldset>
-        <div id="header-titles-values">
-          <div class="form-group">
-            <label><%= i18n('heading') %></label>
-            <input class="form-control" name="header_title" />
-          </div>
-          <div class="form-group">
-            <label><%= i18n('subheading') %></label>
-            <input class="form-control" name="header_subtitle" />
-          </div>
-        </div>
-      </div>
-      <div class="panel-body">
-        <fieldset class="form-group">
-          <legend><%= i18n('background_color') %></legend>
-          <label>
-            <input type="radio" name="color_header" value="black" />
-            <%= i18n('black') %>
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="vattjom" />
-            Vattjom
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="juniskar" />
-            Juniskär
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="bjornstigen" />
-            Björnstigen
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="gronsta" />
-            Grönsta
-          </label>
-          <label>
-            <input
-              type="radio"
-              data-enables=".color-header-values"
-              name="color_header"
-              value="custom"
-            />
-            <%= i18n('use_custom') %>
-          </label>
-          <div class="row color-header-values">
-            <div class="col-md-6">
-              <formfield class="form-group">
-                <legend><%= i18n('lightmode') %></legend>
-                <div class="form-group">
-                  <label><%= i18n('background') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_background_light"
-                  ></select>
-                </div>
-                <div class="form-group">
-                  <label><%= i18n('text') %>, <%= i18n('primary') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_text_primary_light"
-                  ></select>
-                </div>
-                <div class="form-group">
-                  <label><%= i18n('text') %>, <%= i18n('secondary') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_text_secondary_light"
-                  ></select>
-                </div>
-              </formfield>
-            </div>
-            <div class="col-md-6">
-              <formfield class="form-group">
-                <legend><%= i18n('darkmode') %></legend>
-                <div class="form-group">
-                  <label><%= i18n('background') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_background_dark"
-                  ></select>
-                </div>
-                <div class="form-group">
-                  <label><%= i18n('text') %>, <%= i18n('primary') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_text_primary_dark"
-                  ></select>
-                </div>
-                <div class="form-group">
-                  <label><%= i18n('text') %>, <%= i18n('secondary') %></label>
-                  <select
-                    data-component="color-selector"
-                    name="color_header_text_secondary_dark"
-                  ></select>
-                </div>
-              </formfield>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-      <div class="panel-body color-header-values">
-        <formfield class="form-group">
-          <legend><%= i18n('menu') %>, <%= i18n('buttons') %></legend>
-          <label>
-            <input type="radio" name="header_buttons" value="light" />
-            <%= i18n('light') %>
-          </label>
-          <label>
-            <input type="radio" name="header_buttons" value="dark" />
-            <%= i18n('dark') %>
-          </label>
-        </formfield>
-      </div>
-
-      <!-- Only fullscreen -->
-      <div class="panel-body only-fullscreen-option">
         <div class="form-group">
-          <label><%= i18n('new_question') %>, <%= i18n('button') %></label>
-          <select id="select" name="header_newquest_color" class="form-control">
-            <option value="vattjom">Vattjom</option>
-            <option value="juniskar">Juniskär</option>
-            <option value="bjornstigen">Björnstigen</option>
-            <option value="gronsta">Grönsta</option>
-          </select>
+          <label><%= i18n('readmore_description') %></label>
+          <input class="form-control" name="readmore_description" />
+        </div>
+        <div class="form-group">
+          <label><%= i18n('readmore_url') %></label>
+          <input class="form-control" name="readmore_url" />
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<!-- UTSEENDE -->
+<div class="panel-group" id="styling-accordion" data-accordion>
   <!-- CSS -->
   <div class="panel panel-default">
     <a

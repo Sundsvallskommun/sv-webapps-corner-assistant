@@ -104,35 +104,35 @@ router.get("/", (req, res) => {
   const newquest = { color: appData.get("header_newquest_color") as string };
 
   const header = {
-    color: appData.get("color_header") as string,
+    color: globalAppData.get("color_header") as string,
     background: {
       light: properties.get(
-        appData.get("color_header_background_light"),
+        globalAppData.get("color_header_background_light"),
         "htmlHexValue"
       ) as string,
       dark: properties.get(
-        appData.get("color_header_background_dark"),
+        globalAppData.get("color_header_background_dark"),
         "htmlHexValue"
       ) as string,
     },
     text: {
       primary: {
         light: properties.get(
-          appData.get("color_header_text_primary_light"),
+          globalAppData.get("color_header_text_primary_light"),
           "htmlHexValue"
         ) as string,
         dark: properties.get(
-          appData.get("color_header_text_primary_dark"),
+          globalAppData.get("color_header_text_primary_dark"),
           "htmlHexValue"
         ) as string,
       },
       secondary: {
         light: properties.get(
-          appData.get("color_header_text_secondary_light"),
+          globalAppData.get("color_header_text_secondary_light"),
           "htmlHexValue"
         ) as string,
         dark: properties.get(
-          appData.get("color_header_text_secondary_dark"),
+          globalAppData.get("color_header_text_secondary_dark"),
           "htmlHexValue"
         ) as string,
       },
@@ -208,6 +208,13 @@ router.get("/", (req, res) => {
     colorscheme: globalAppData.get("colorscheme"),
     rememberSession: appData.get("remember_session") as boolean,
     appSessionId: appData.get("app_session_id") as string,
+    readmore: appData.get("readmore_url")
+      ? {
+          url: appData.get("readmore_url") as string,
+          description: (appData.get("readmore_description") ||
+            appData.get("readmore_url")) as string,
+        }
+      : undefined,
   };
 
   const viewMode = versionUtil.getCurrentVersion();
