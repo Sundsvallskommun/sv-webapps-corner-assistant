@@ -1,5 +1,5 @@
 :host,
-#sk-cornerroot {
+.sk-cornerroot {
   width: 100%;
   /* height: 100vh;
   width: 100vw; */
@@ -107,15 +107,6 @@ Remove the default font size and weight for headings.
   h6 {
     font-size: inherit;
     font-weight: inherit;
-  }
-
-  /*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
-
-  a {
-    color: inherit;
-    text-decoration: inherit;
   }
 
   /*
