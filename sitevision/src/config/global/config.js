@@ -1,3 +1,4 @@
+//Functions to handle panels in the global configuration of the application
 $(function () {
   $('[data-toggle="collapse"]').each((i, el) => {
     const target = $(el).attr("data-target");
