@@ -3,6 +3,7 @@
     "target": "es2016",
     "jsx": "react",
     "module": "ES6",
+    "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

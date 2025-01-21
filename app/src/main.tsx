@@ -61,6 +61,7 @@ if (container) {
   if (container.getAttribute("data-shadow") === "false") {
     const rootElement = document?.createElement("div");
     rootElement.setAttribute("id", "sk-cornerroot");
+    rootElement.classList.add("sk-cornerroot");
 
     // create variable to attach the tailwind stylesheet
     const style = document?.createElement("style");

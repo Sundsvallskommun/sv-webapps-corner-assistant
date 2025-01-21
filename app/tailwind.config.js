@@ -11,7 +11,7 @@ export default {
     "./node_modules/@sk-web-gui/*/dist/**/*.js",
   ],
   darkMode: "class", // or 'media' or 'class'
-  important: "#sk-cornerroot",
+  important: ".sk-cornerroot",
   corePlugins: {
     preflight: false,
   },

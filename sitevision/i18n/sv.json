@@ -29,6 +29,9 @@
   "title": "Titel",
   "avatar": "Avatar",
   "global": "Globala inställningar",
+  "readmore": "'Läs mer'-länk",
+  "readmore_url": "Länk (url)",
+  "readmore_description": "Länktext",
 
   "users": "Användare",
 
