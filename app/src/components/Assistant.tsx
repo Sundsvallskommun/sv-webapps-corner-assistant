@@ -3,12 +3,15 @@ import { Avatar } from "@sk-web-gui/react";
 import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useAppSessions } from "../services/useAppSessions";
+import { Options } from "../types/shared";
 
 export const Assistant: React.FC = () => {
-  const [options, settings] = useAssistantStore((state) => [
-    state.options,
-    state.settings,
-  ]);
+  const options: Options = useAssistantStore(
+    (state) => state.options
+  ) as unknown as Options;
+
+  const settings = useAssistantStore((state) => state.settings);
+
   const info = useAssistantStore((state) => state.info);
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
@@ -17,7 +20,8 @@ export const Assistant: React.FC = () => {
   const appSessionId =
     settings?.app +
     (rememberSession ? options?.appSessionId || "default" : "__dont_remember");
-  const { sessionId, setSessionId } = useAppSessions(appSessionId);
+  const { sessionId, setSessionId, docked, setDocked } =
+    useAppSessions(appSessionId);
 
   const userAvatar = (
     <Avatar
@@ -47,6 +51,13 @@ export const Assistant: React.FC = () => {
   );
 
   useEffect(() => {
+    if (!rememberSession || typeof docked !== "boolean") {
+      setDocked(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (!rememberSession) {
       setSessionId("");
     }
@@ -62,8 +73,20 @@ export const Assistant: React.FC = () => {
     //eslint-disable-next-line
   }, [session?.id]);
 
+  const handleDocked = (isdocked: boolean) => {
+    console.log("isDocked: ", isdocked);
+    setDocked(isdocked);
+  };
+
+  useEffect(() => {
+    console.log("Docked: ", docked);
+  }, [docked]);
+
   return (
     <AICornerModule
+      docked={rememberSession ? docked : undefined}
+      onOpen={() => (rememberSession ? handleDocked(false) : undefined)}
+      onClose={() => (rememberSession ? handleDocked(true) : undefined)}
       onSendQuery={sendQuery}
       onNewSession={newSession}
       onChangeSession={setSessionId}

@@ -12,6 +12,7 @@ import {
 } from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
+import { Options } from "./types/shared";
 
 function App({
   user,
@@ -22,15 +23,18 @@ function App({
   hash?: string | null;
   assistantId?: string | null;
 }) {
-  const [setSettings, settings, setInfo, setApiBaseUrl, setStream, options] =
+  const [setSettings, settings, setInfo, setApiBaseUrl, setStream] =
     useAssistantStore((state) => [
       state.setSettings,
       state.settings,
       state.setInfo,
       state.setApiBaseUrl,
       state.setStream,
-      state.options,
     ]);
+
+  const options: Options = useAssistantStore(
+    (state) => state.options
+  ) as unknown as Options;
 
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -123,8 +127,6 @@ function App({
         },
         screens: {
           ...defaultTheme.screens,
-          ismobile:
-            options?.ismobile || defaultTheme.screens?.["medium-device-max"],
         },
         colorSchemes: {
           light: {
@@ -244,7 +246,7 @@ function App({
               bubble: {
                 surface: defaultColors.includes(options?.colors?.bubble?.color)
                   ? `var(--sk-colors-${options?.colors?.bubble?.color}-surface-accent-DEFAULT)`
-                  : options?.colors?.bubble?.surface ||
+                  : options?.colors?.bubble?.surface.dark ??
                     `var(--sk-colors-vattjom-surface-accent-DEFAULT)`,
                 "surface-hover": defaultColors.includes(
                   options?.colors?.bubble?.color
