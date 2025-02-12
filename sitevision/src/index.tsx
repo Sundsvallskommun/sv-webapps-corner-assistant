@@ -10,8 +10,9 @@ import { renderToString } from "react-dom/server";
 import ReactHtmlParser from "react-html-parser";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
 import { getHash } from "./utils/hash.service";
-import type { DefaultColor } from "./common/defaultColors";
 import globalAppData from "@sitevision/api/server/globalAppData";
+import type { DefaultColor } from "./types/shared";
+import { ColorSchemeMode } from "@sk-web-gui/react";
 
 router.get("/", (req, res) => {
   const salt = globalAppData.get("salt") as string;
@@ -41,7 +42,7 @@ router.get("/", (req, res) => {
         .filter((quest) => !!quest)
     : undefined;
   const questionsTitle = useQuestions
-    ? appData.get("questions_title")
+    ? (appData.get("questions_title") as string)
     : undefined;
 
   const showHistory = appData.get("show_history") as boolean;
@@ -101,7 +102,9 @@ router.get("/", (req, res) => {
 
   const fontbase = parseFloat(globalAppData.get("fontbase") as string);
 
-  const newquest = { color: appData.get("header_newquest_color") as string };
+  const newquest = {
+    color: globalAppData.get("header_newquest_color") as DefaultColor,
+  };
 
   const header = {
     color: globalAppData.get("color_header") as string,
@@ -205,7 +208,9 @@ router.get("/", (req, res) => {
       : undefined,
     fontbase,
     css,
-    colorscheme: globalAppData.get("colorscheme"),
+    colorscheme: globalAppData.get("colorscheme") as
+      | ColorSchemeMode
+      | undefined,
     rememberSession: appData.get("remember_session") as boolean,
     appSessionId: appData.get("app_session_id") as string,
     readmore: appData.get("readmore_url")

@@ -1,12 +1,17 @@
 import { createJSONStorage, persist } from "zustand/middleware";
 import { createWithEqualityFn } from "zustand/traditional";
 
+interface SessionStorageData {
+  id: string;
+  docked: boolean;
+}
 interface State {
-  sessionIds: Record<string, string>;
+  sessionIds: Record<string, SessionStorageData>;
 }
 
 interface Actions {
-  setSessionIds: (sessionIds: Record<string, string>) => void;
+  setSessionIds: (sessionIds: Record<string, SessionStorageData>) => void;
+  setDocked: (sessionId: string, docked: boolean) => void;
 }
 
 const useAppSessionStore = createWithEqualityFn(
@@ -14,6 +19,13 @@ const useAppSessionStore = createWithEqualityFn(
     (set) => ({
       sessionIds: {},
       setSessionIds: (sessionIds) => set({ sessionIds }),
+      setDocked: (sessionId, docked) =>
+        set((state) => ({
+          sessionIds: {
+            ...state.sessionIds,
+            [sessionId]: { ...state.sessionIds[sessionId], docked },
+          },
+        })),
     }),
     {
       name: "sk-ai-sv-sessions",
@@ -23,19 +35,22 @@ const useAppSessionStore = createWithEqualityFn(
 );
 
 export const useAppSessions = (appSession: string) => {
-  const [sessionIds, setSessionIds] = useAppSessionStore((state) => [
-    state.sessionIds,
-    state.setSessionIds,
-  ]);
+  const [sessionIds, setSessionIds, setStoreDocked] = useAppSessionStore(
+    (state) => [state.sessionIds, state.setSessionIds, state.setDocked]
+  );
+  const sessionId = sessionIds[appSession]?.id || "";
+  const docked = sessionIds[appSession]?.docked ?? true;
 
   const setSessionId = (sessionId) => {
     setSessionIds({
       ...sessionIds,
-      [appSession]: sessionId,
+      [appSession]: { id: sessionId, docked: docked ?? true },
     });
   };
 
-  const sessionId = sessionIds[appSession] || "";
+  const setDocked = (docked: boolean) => {
+    setStoreDocked(appSession, docked);
+  };
 
-  return { sessionId, setSessionId };
+  return { sessionId, setSessionId, docked, setDocked };
 };
