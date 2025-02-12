@@ -74,13 +74,8 @@ export const Assistant: React.FC = () => {
   }, [session?.id]);
 
   const handleDocked = (isdocked: boolean) => {
-    console.log("isDocked: ", isdocked);
     setDocked(isdocked);
   };
-
-  useEffect(() => {
-    console.log("Docked: ", docked);
-  }, [docked]);
 
   return (
     <AICornerModule
