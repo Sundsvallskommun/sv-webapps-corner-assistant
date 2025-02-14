@@ -6,48 +6,7 @@ import {
 import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import { Avatar } from "@sk-web-gui/react";
-import type { DefaultColor } from "../../common/defaultColors";
-
-interface Color {
-  light: string;
-  dark: string;
-}
-export interface Options {
-  css?: string;
-  fontface: Record<string, string>;
-  colors: {
-    header?: {
-      color: string;
-      background?: Color;
-      text?: {
-        primary?: Color;
-        secondary?: Color;
-      };
-      menu: string;
-    };
-    bubble?: {
-      color: string;
-      surface?: Color;
-      "surface-hover"?: Color;
-      text?: Color;
-    };
-  };
-  assistant: {
-    color?: DefaultColor;
-    showTitle?: boolean;
-  };
-  positions: {
-    top: string;
-    bottom: string;
-    left: string;
-    right: string;
-  };
-  title?: string;
-  subtitle?: string;
-  fontbase?: number;
-  appSessionId?: string;
-  readmore?: React.ComponentProps<typeof AICornerModule>["readmore"];
-}
+import { Options } from "../../types/shared";
 
 interface AssistantDummieProps {
   assistant: AssistantInfo;
