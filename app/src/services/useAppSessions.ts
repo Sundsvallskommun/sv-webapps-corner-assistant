@@ -28,7 +28,7 @@ const useAppSessionStore = createWithEqualityFn(
         })),
     }),
     {
-      name: "sk-ai-sv-sessions",
+      name: "sk-ai-sv-corner-sessions",
       storage: createJSONStorage(() => sessionStorage),
     }
   )
