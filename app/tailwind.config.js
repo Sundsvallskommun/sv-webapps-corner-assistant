@@ -56,7 +56,6 @@ export default {
     Core({
       plugin: {
         cssBase: true,
-        colors: [],
         components: ["AICornerModule"],
       },
     }),
