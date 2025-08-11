@@ -235,6 +235,7 @@ router.get("/", (req, res) => {
     : "";
 
   const assistantId = appData.get("assistantId") as string;
+  const is_group_chat = appData.get("is_group_chat") as boolean;
   const app = appData.get("app") as string;
   const stream = globalAppData.get("stream") as boolean;
   const hash = getHash(username, assistantId, app, salt);
@@ -243,6 +244,7 @@ router.get("/", (req, res) => {
     assistantId,
     app,
     hash,
+    is_group_chat,
   };
 
   res.agnosticRender(

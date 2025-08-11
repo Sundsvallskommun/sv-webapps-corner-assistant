@@ -1,6 +1,7 @@
 {
   "appData": {
     "assistantId": "",
+    "is_group_chat": false,
     "allow_fullscreen": false,
     "app": "",
     "assistant_name": "Corner Assistant",
