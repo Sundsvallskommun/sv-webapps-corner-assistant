@@ -23,13 +23,14 @@ function App({
   hash?: string | null;
   assistantId?: string | null;
 }) {
-  const [setSettings, settings, setInfo, setApiBaseUrl, setStream] =
+  const [setSettings, settings, setInfo, setApiBaseUrl, setStream, setApiKey] =
     useAssistantStore((state) => [
       state.setSettings,
       state.settings,
       state.setInfo,
       state.setApiBaseUrl,
       state.setStream,
+      state.setApikey,
     ]);
 
   const options: Options = useAssistantStore(
@@ -52,12 +53,13 @@ function App({
   useEffect(() => {
     setAssistantStoreName("sk-ai-sv-corner-assistant");
 
-    if (import.meta.env.DEV) {
+    if (import.meta.env.NODE_ENV === "development") {
       const settings: AssistantSettings = {
         user: user || "",
         assistantId: assistantId || "",
         hash: hash || "",
         app: import.meta.env.VITE_APPLICATION,
+        is_group_chat: import.meta.env.VITE_GROUPCHAT === "true",
       };
 
       const info: AssistantInfo = {
@@ -72,6 +74,8 @@ function App({
         avatar: `${import.meta.env.VITE_BASE_PATH}assets/assistanticon.png`,
       };
 
+      setApiKey(import.meta.env.VITE_API_KEY || "");
+
       setStream(import.meta.env.VITE_STREAM_DEFAULT);
       setApiBaseUrl(import.meta.env.VITE_API_BASE_URL);
 
@@ -80,7 +84,16 @@ function App({
     }
 
     setLoaded(true);
-  }, [user, hash, assistantId, setSettings, setInfo, setStream, setApiBaseUrl]);
+  }, [
+    user,
+    hash,
+    assistantId,
+    setSettings,
+    setInfo,
+    setStream,
+    setApiBaseUrl,
+    setApiKey,
+  ]);
 
   const getPosition = (position: string) => {
     const incomingPosition = options?.positions?.[position];
