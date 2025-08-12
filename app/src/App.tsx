@@ -53,7 +53,7 @@ function App({
   useEffect(() => {
     setAssistantStoreName("sk-ai-sv-corner-assistant");
 
-    if (import.meta.env.NODE_ENV === "development") {
+    if (import.meta.env.MODE === "development") {
       const settings: AssistantSettings = {
         user: user || "",
         assistantId: assistantId || "",
