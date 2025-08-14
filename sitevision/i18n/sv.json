@@ -4,6 +4,7 @@
   "assistant": "Assistent",
   "user": "Användare",
   "assistant_id": "Assistentens ID",
+  "group_chat": "Gruppchatt",
   "app": "Applikation",
   "server_url": "Url till AI-server",
   "remember_session": "Behåll session vid navigering",

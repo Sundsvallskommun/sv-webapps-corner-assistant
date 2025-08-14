@@ -1,19 +1,18 @@
 {
   "name": "sv-webapps-corner-assistant",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "type": "module",
   "dependencies": {
     "@sitevision/api": "^2024.4.2",
     "@sitevision/sitevision-scripts": "^3.5.0",
-    "@sk-web-gui/ai": "^0.11.1",
-    "@sk-web-gui/react": "^1.2.36",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "cross-env": "^7.0.3",
+    "@sk-web-gui/ai": "^2.0.0",
+    "@sk-web-gui/react": "^2.0.1",
+    "cross-env": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.54.2",
+    "react-hook-form": "^7.62.0",
     "react-html-parser": "^2.0.2",
-    "zustand": "^4.5.4"
+    "zustand": "^5.0.7"
   },
   "scripts": {
     "build": "yarn copybuild && sitevision-scripts build",
@@ -37,7 +36,7 @@
     "autoprefixer"
   ],
   "devDependencies": {
-    "@types/react-html-parser": "^2.0.6",
+    "@types/react-html-parser": "^2.0.7",
     "copy-file": "^11.0.0"
   }
 }

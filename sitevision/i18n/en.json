@@ -4,6 +4,7 @@
   "assistant": "Assistant",
   "user": "User",
   "assistant_id": "Assistant ID",
+  "group_chat": "Group chat",
   "app": "Application",
   "server_url": "Url to AI server",
   "remember_session": "Keep session alive",
