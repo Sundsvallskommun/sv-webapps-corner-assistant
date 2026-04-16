@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react()],
     build: {
+      cssMinify: false,
       rollupOptions: {
         output: {
           entryFileNames: `js/assistant-corner.js`,
