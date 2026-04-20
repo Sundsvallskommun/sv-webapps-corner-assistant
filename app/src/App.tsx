@@ -1,6 +1,6 @@
 import {
-  AssistantInfo,
-  AssistantSettings,
+  type AssistantInfo,
+  type AssistantSettings,
   setAssistantStoreName,
   useAssistantStore,
 } from "@sk-web-gui/ai";
@@ -12,7 +12,7 @@ import {
 } from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
-import { Options } from "./types/shared";
+import type { Options } from "./types/shared";
 
 function App({
   user,
@@ -34,7 +34,7 @@ function App({
     ]);
 
   const options: Options = useAssistantStore(
-    (state) => state.options
+    (state) => state.options,
   ) as unknown as Options;
 
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -149,13 +149,13 @@ function App({
 
               header: {
                 background: defaultColors.includes(
-                  options?.colors?.header?.color
+                  options?.colors?.header?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.color}-surface-primary-DEFAULT)`
                   : options?.colors?.header?.color === "black"
-                  ? "var(--sk-colors-primitives-gray-900)"
-                  : options?.colors?.header?.background?.light ||
-                    "var(--sk-colors-primitives-gray-900)",
+                    ? "var(--sk-colors-primitives-gray-900)"
+                    : options?.colors?.header?.background?.light ||
+                      "var(--sk-colors-primitives-gray-900)",
 
                 text: {
                   primary:
@@ -179,7 +179,7 @@ function App({
                   : options?.colors?.bubble?.surface?.light ||
                     `var(--sk-colors-vattjom-surface-accent-DEFAULT)`,
                 "surface-hover": defaultColors.includes(
-                  options?.colors?.bubble?.color
+                  options?.colors?.bubble?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.bubble?.color}-surface-accent-hover)`
                   : options?.colors?.bubble?.["surface-hover"]?.light ||
@@ -208,17 +208,17 @@ function App({
               },
               newquest: {
                 surface: defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-surface-primary-DEFAULT)`
                   : `var(--sk-colors-vattjom-surface-primary-DEFAULT)`,
                 "surface-hover": defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-surface-primary-hover)`
                   : `var(--sk-colors-vattjom-surface-primary-hover)`,
                 text: defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-text-secondary)`
                   : `var(--sk-colors-vattjom-text-secondary)`,
@@ -233,13 +233,13 @@ function App({
               ...defaultTheme.colorSchemes.dark.colors,
               header: {
                 background: defaultColors.includes(
-                  options?.colors?.header?.color
+                  options?.colors?.header?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.color}-surface-primary-DEFAULT)`
                   : options?.colors?.header?.color === "black"
-                  ? "var(--sk-colors-primitives-gray-100)"
-                  : options?.colors?.header?.background?.dark ||
-                    "var(--sk-colors-primitives-gray-100)",
+                    ? "var(--sk-colors-primitives-gray-100)"
+                    : options?.colors?.header?.background?.dark ||
+                      "var(--sk-colors-primitives-gray-100)",
 
                 text: {
                   primary:
@@ -259,10 +259,10 @@ function App({
               bubble: {
                 surface: defaultColors.includes(options?.colors?.bubble?.color)
                   ? `var(--sk-colors-${options?.colors?.bubble?.color}-surface-accent-DEFAULT)`
-                  : options?.colors?.bubble?.surface.dark ??
-                    `var(--sk-colors-vattjom-surface-accent-DEFAULT)`,
+                  : (options?.colors?.bubble?.surface.dark ??
+                    `var(--sk-colors-vattjom-surface-accent-DEFAULT)`),
                 "surface-hover": defaultColors.includes(
-                  options?.colors?.bubble?.color
+                  options?.colors?.bubble?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.bubble?.color}-surface-accent-hover)`
                   : options?.colors?.bubble?.["surface-hover"]?.dark ||
@@ -291,17 +291,17 @@ function App({
               },
               newquest: {
                 surface: defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-surface-primary-DEFAULT)`
                   : `var(--sk-colors-vattjom-surface-primary-DEFAULT)`,
                 "surface-hover": defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-surface-primary-hover)`
                   : `var(--sk-colors-vattjom-surface-primary-hover)`,
                 text: defaultColors.includes(
-                  options?.colors?.header?.newquest?.color
+                  options?.colors?.header?.newquest?.color,
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.newquest?.color}-text-secondary)`
                   : `var(--sk-colors-vattjom-text-secondary)`,
@@ -312,7 +312,7 @@ function App({
         },
       }),
     //eslint-disable-next-line
-    [settings]
+    [settings],
   );
 
   return (

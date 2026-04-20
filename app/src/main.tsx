@@ -1,8 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import css from "./index.css?inline";
+import tailwindCss from "./index.css?inline";
+import preflightCss from "../preflight.css?inline";
+import coreBaseCss from "../coreBase.css?inline";
+import appCss from "./App.css?inline";
 import "./index.css";
+import "./App.css";
+import "../preflight.css";
+import "../coreBase.css";
+
+const css = [tailwindCss, preflightCss, coreBaseCss, appCss].join("\n");
 
 export const initializeReactApp = (appElement, rootElement) => {
   const root = ReactDOM.createRoot(rootElement);
@@ -17,7 +25,7 @@ export const initializeReactApp = (appElement, rootElement) => {
           import.meta.env.VITE_DEFAULT_ASSISTANT_ID
         }
       />
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 };
 
