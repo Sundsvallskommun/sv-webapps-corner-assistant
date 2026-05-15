@@ -10,5 +10,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "outDir": "build"
-  }
+  },
+  "include": ["Global.d.ts", "src/**/*"],
+  "exclude": ["build", "dist", "node_modules"]
 }
