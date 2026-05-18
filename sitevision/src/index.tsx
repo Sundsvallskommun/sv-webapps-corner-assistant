@@ -1,5 +1,6 @@
 import router from "@sitevision/api/common/router";
 import appData from "@sitevision/api/server/appData";
+// eslint-disable-next-line no-restricted-imports -- Needed to render configured avatar image nodes.
 import imageRenderer from "@sitevision/api/server/ImageRenderer";
 import portletContextUtil from "@sitevision/api/server/PortletContextUtil";
 import properties from "@sitevision/api/server/Properties";
@@ -7,14 +8,14 @@ import versionUtil from "@sitevision/api/server/VersionUtil";
 import type { AssistantInfo } from "@sk-web-gui/ai";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
-import ReactHtmlParser from "react-html-parser";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
-import { getHash } from "./utils/hash.service";
 import globalAppData from "@sitevision/api/server/globalAppData";
-import type { DefaultColor } from "./types/shared";
-import { ColorSchemeMode } from "@sk-web-gui/react";
+import type { DefaultColor, Options } from "./types/shared";
+import type { ColorSchemeMode } from "@sk-web-gui/react";
+import ReactHtmlParser from "react-html-parser";
+import { getHash } from "./utils/hash.service";
 
-router.get("/", (req, res) => {
+router.get("/", (_req, res) => {
   const salt = globalAppData.get("salt") as string;
   const avatar = appData.getNode("assistant_avatar");
   const avatarRender = imageRenderer;
@@ -28,6 +29,7 @@ router.get("/", (req, res) => {
     avatar: avatar ? ReactHtmlParser(avatarRender.render())[0] : undefined,
   };
 
+  const version2 = appData.get("version2") as boolean;
   const useQuestions = appData.get("use_questions") as boolean;
   const numberOfQuestions = parseInt(appData.get("questions_count") as string);
   const questions = useQuestions
@@ -248,13 +250,16 @@ router.get("/", (req, res) => {
   };
 
   res.agnosticRender(
-    renderToString(<ServerSideApp assistant={assistant} options={options} />),
+    renderToString(
+      <ServerSideApp assistant={assistant} options={options as Options} />
+    ),
     {
       assistant,
       settings,
       shadowdom,
       isEditing,
       options,
+      version2,
       apiBaseUrl: globalAppData.get("server_url") as string,
       stream,
     }

@@ -4,5 +4,10 @@
     "commonjs": true,
     "es6": true,
     "jquery": true
-  }
+  },
+  "extends": [
+    "@sitevision/eslint-config-recommended",
+    "@sitevision/eslint-config-webapp-react",
+    "@sitevision/eslint-config-typescript"
+  ]
 }

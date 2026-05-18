@@ -92,5 +92,7 @@
   "distance_from_bottom": "Avstånd från nedre kant",
 
   "responsiveness": "Responsivitet",
-  "small_screen_breakpoint": "Brytpunkt för små skärmar"
+  "small_screen_breakpoint": "Brytpunkt för små skärmar",
+
+  "use_version_2": "Använd conversation version 2"
 }

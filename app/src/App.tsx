@@ -23,15 +23,23 @@ function App({
   hash?: string | null;
   assistantId?: string | null;
 }) {
-  const [setSettings, settings, setInfo, setApiBaseUrl, setStream, setApiKey] =
-    useAssistantStore((state) => [
-      state.setSettings,
-      state.settings,
-      state.setInfo,
-      state.setApiBaseUrl,
-      state.setStream,
-      state.setApikey,
-    ]);
+  const [
+    setSettings,
+    settings,
+    setInfo,
+    setApiBaseUrl,
+    setStream,
+    setApiKey,
+    setConversationVersion,
+  ] = useAssistantStore((state) => [
+    state.setSettings,
+    state.settings,
+    state.setInfo,
+    state.setApiBaseUrl,
+    state.setStream,
+    state.setApikey,
+    state.setConversationVersion,
+  ]);
 
   const options: Options = useAssistantStore(
     (state) => state.options,
@@ -52,7 +60,7 @@ function App({
 
   useEffect(() => {
     setAssistantStoreName("sk-ai-sv-corner-assistant");
-
+    setConversationVersion(2);
     if (import.meta.env.MODE === "development") {
       const settings: AssistantSettings = {
         user: user || "",

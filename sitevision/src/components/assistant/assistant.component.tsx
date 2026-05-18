@@ -10,6 +10,7 @@ export interface AssistantProps {
   options: Options;
   apiBaseUrl: string;
   stream: boolean;
+  version2?: boolean;
 }
 
 export const Assistant: React.FunctionComponent<AssistantProps> = ({
@@ -19,6 +20,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   options,
   stream,
   apiBaseUrl,
+  version2,
 }) => {
   const [
     oldInfo,
@@ -29,6 +31,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     setOptions,
     setStream,
     setApiBaseUrl,
+    setConversationVersion,
   ] = useAssistantStore((state) => [
     state.info,
     state.setInfo,
@@ -38,12 +41,17 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     state.setOptions,
     state.setStream,
     state.setApiBaseUrl,
+    state.setConversationVersion,
   ]);
 
   React.useEffect(() => {
     require("../../../assets/assistant-corner");
     setAssistantStoreName("sk-ai-sv-corner-assistant");
   }, []);
+
+  React.useEffect(() => {
+    setConversationVersion(version2 ? 2 : 1);
+  }, [version2, setConversationVersion]);
 
   React.useEffect(() => {
     const info: AssistantInfo = {

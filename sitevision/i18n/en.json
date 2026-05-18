@@ -91,5 +91,7 @@
   "distance_from_bottom": "Distance from bottom",
 
   "responsiveness": "Responsiveness",
-  "small_screen_breakpoint": "Breakpoint for small screens"
+  "small_screen_breakpoint": "Breakpoint for small screens",
+
+  "use_version_2": "Use conversation version 2"
 }
