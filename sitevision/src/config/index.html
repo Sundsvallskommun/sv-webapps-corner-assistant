@@ -10,21 +10,74 @@
     </a>
     <div class="panel-collapse" id="assistant-settings">
       <div class="panel-body">
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('assistant_id') %></label>
-          <input class="form-control" name="assistantId" />
+          <input class="form-control" name="assistantId" data-metadata-manual />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistantId__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistantId__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label><%= i18n('group_chat') %></label>
-          <input
-            type="checkbox"
-            name="is_group_chat"
-            data-value-type="boolean"
-          />
+        <div class="form-group" data-metadata-field>
+          <label data-metadata-manual
+            ><input
+              type="checkbox"
+              name="is_group_chat"
+              data-value-type="boolean"
+            />
+            <%= i18n('group_chat') %></label
+          >
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="is_group_chat__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="is_group_chat__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('app') %></label>
-          <input class="form-control" name="app" />
+          <input class="form-control" name="app" data-metadata-manual />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="app__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="app__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
 
         <div
@@ -43,8 +96,8 @@
             </a>
             <div class="panel-collapse" id="advanced-settings">
               <div class="panel-body">
-                <div class="form-group">
-                  <label
+                <div class="form-group" data-metadata-field>
+                  <label data-metadata-manual
                     ><input
                       type="checkbox"
                       name="remember_session"
@@ -52,13 +105,58 @@
                     />
                     <%= i18n('remember_session') %></label
                   >
+                  <div class="checkbox">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="remember_session__useMetadata"
+                        data-value-type="boolean"
+                        data-metadata-toggle
+                      />
+                      <%= i18n('use_metadata') %>
+                    </label>
+                    <div data-metadata-selector-container>
+                      <select
+                        data-component="metadata-selector"
+                        name="remember_session__metadata"
+                      ></select>
+                      <small class="help-block"
+                        ><%= i18n('metadata_field_help') %></small
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-metadata-field>
                   <label><%= i18n('app_session_id') %></label>
-                  <input type="text" required name="app_session_id" />
+                  <input
+                    type="text"
+                    required
+                    name="app_session_id"
+                    data-metadata-manual
+                  />
+                  <div class="checkbox">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="app_session_id__useMetadata"
+                        data-value-type="boolean"
+                        data-metadata-toggle
+                      />
+                      <%= i18n('use_metadata') %>
+                    </label>
+                    <div data-metadata-selector-container>
+                      <select
+                        data-component="metadata-selector"
+                        name="app_session_id__metadata"
+                      ></select>
+                      <small class="help-block"
+                        ><%= i18n('metadata_field_help') %></small
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label
+                <div class="form-group" data-metadata-field>
+                  <label data-metadata-manual
                     ><input
                       type="checkbox"
                       name="allow_fullscreen"
@@ -67,9 +165,29 @@
                     />
                     <%= i18n('allow_fullscreen') %></label
                   >
+                  <div class="checkbox">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="allow_fullscreen__useMetadata"
+                        data-value-type="boolean"
+                        data-metadata-toggle
+                      />
+                      <%= i18n('use_metadata') %>
+                    </label>
+                    <div data-metadata-selector-container>
+                      <select
+                        data-component="metadata-selector"
+                        name="allow_fullscreen__metadata"
+                      ></select>
+                      <small class="help-block"
+                        ><%= i18n('metadata_field_help') %></small
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label
+                <div class="form-group" data-metadata-field>
+                  <label data-metadata-manual
                     ><input
                       type="checkbox"
                       name="show_history"
@@ -77,6 +195,26 @@
                     />
                     <%= i18n('show_history') %></label
                   >
+                  <div class="checkbox">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="show_history__useMetadata"
+                        data-value-type="boolean"
+                        data-metadata-toggle
+                      />
+                      <%= i18n('use_metadata') %>
+                    </label>
+                    <div data-metadata-selector-container>
+                      <select
+                        data-component="metadata-selector"
+                        name="show_history__metadata"
+                      ></select>
+                      <small class="help-block"
+                        ><%= i18n('metadata_field_help') %></small
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -102,52 +240,169 @@
     </a>
     <div class="panel-collapse" id="assistant-info">
       <div class="panel-body">
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('name') %></label>
-          <input class="form-control" name="assistant_name" />
+          <input
+            class="form-control"
+            name="assistant_name"
+            data-metadata-manual
+          />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_name__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_name__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('title') %></label>
-          <input class="form-control" name="assistant_title" />
+          <input
+            class="form-control"
+            name="assistant_title"
+            data-metadata-manual
+          />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_title__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_title__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('description') %></label>
-          <textarea class="form-control" name="assistant_description">
+          <textarea
+            class="form-control"
+            name="assistant_description"
+            data-metadata-manual
+          >
           </textarea>
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_description__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_description__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('avatar') %></label>
           <input
             class="form-control"
             data-component="image-selector"
             data-removable
             name="assistant_avatar"
+            data-metadata-manual
           />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_avatar__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_avatar__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('initials') %></label>
           <input
             class="form-control"
             name="assistant_shortName"
             maxlength="2"
+            data-metadata-manual
           />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_shortName__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_shortName__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('avatar_color') %></label>
           <select
             id="select"
             name="assistant_avatar_color"
             class="form-control"
+            data-metadata-manual
           >
             <option value="vattjom">Vattjom</option>
             <option value="juniskar">Juniskär</option>
             <option value="bjornstigen">Björnstigen</option>
             <option value="gronsta">Grönsta</option>
           </select>
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_avatar_color__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_avatar_color__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label
+        <div class="form-group" data-metadata-field>
+          <label data-metadata-manual
             ><input
               type="checkbox"
               name="assistant_show_title"
@@ -155,6 +410,23 @@
             />
             <%= i18n('show_name_in_feed') %></label
           >
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="assistant_show_title__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="assistant_show_title__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -174,35 +446,114 @@
     <div class="panel-collapse" id="user-info">
       <div class="panel-body">
         <p><%= i18n('user_info_description') %></p>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('name') %></label>
-          <input class="form-control" name="user_name" />
+          <input class="form-control" name="user_name" data-metadata-manual />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="user_name__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="user_name__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('avatar') %></label>
           <input
             class="form-control"
             data-component="image-selector"
             data-removable
             name="user_avatar"
+            data-metadata-manual
           />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="user_avatar__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="user_avatar__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('initials') %></label>
-          <input class="form-control" name="user_initials" maxlength="2" />
+          <input
+            class="form-control"
+            name="user_initials"
+            maxlength="2"
+            data-metadata-manual
+          />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="user_initials__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="user_initials__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('avatar_color') %></label>
-          <select id="select" name="user_avatar_color" class="form-control">
+          <select
+            id="select"
+            name="user_avatar_color"
+            class="form-control"
+            data-metadata-manual
+          >
             <option value="vattjom">Vattjom</option>
             <option value="juniskar">Juniskär</option>
             <option value="bjornstigen">Björnstigen</option>
             <option value="gronsta">Grönsta</option>
           </select>
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="user_avatar_color__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="user_avatar_color__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label
+        <div class="form-group" data-metadata-field>
+          <label data-metadata-manual
             ><input
               type="checkbox"
               name="user_show_title"
@@ -210,6 +561,23 @@
             />
             <%= i18n('show_name_in_feed') %></label
           >
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="user_show_title__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="user_show_title__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -247,35 +615,130 @@
         </fieldset>
 
         <div id="system-custom-setup">
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('name') %></label>
-            <input class="form-control" name="system_name" />
+            <input
+              class="form-control"
+              name="system_name"
+              data-metadata-manual
+            />
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="system_name__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="system_name__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('avatar') %></label>
             <input
               class="form-control"
               data-component="image-selector"
               data-removable
               name="system_avatar"
+              data-metadata-manual
             />
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="system_avatar__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="system_avatar__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('initials') %></label>
-            <input class="form-control" name="system_initials" maxlength="2" />
+            <input
+              class="form-control"
+              name="system_initials"
+              maxlength="2"
+              data-metadata-manual
+            />
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="system_initials__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="system_initials__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('avatar_color') %></label>
-            <select id="select" name="system_avatar_color" class="form-control">
+            <select
+              id="select"
+              name="system_avatar_color"
+              class="form-control"
+              data-metadata-manual
+            >
               <option value="vattjom">Vattjom</option>
               <option value="juniskar">Juniskär</option>
               <option value="bjornstigen">Björnstigen</option>
               <option value="gronsta">Grönsta</option>
             </select>
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="system_avatar_color__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="system_avatar_color__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label
+          <div class="form-group" data-metadata-field>
+            <label data-metadata-manual
               ><input
                 type="checkbox"
                 name="system_show_title"
@@ -283,6 +746,26 @@
               />
               <%= i18n('show_name_in_feed') %></label
             >
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="system_show_title__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="system_show_title__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -320,13 +803,61 @@
           </label>
         </fieldset>
         <div id="header-titles-values">
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('heading') %></label>
-            <input class="form-control" name="header_title" />
+            <input
+              class="form-control"
+              name="header_title"
+              data-metadata-manual
+            />
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="header_title__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="header_title__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" data-metadata-field>
             <label><%= i18n('subheading') %></label>
-            <input class="form-control" name="header_subtitle" />
+            <input
+              class="form-control"
+              name="header_subtitle"
+              data-metadata-manual
+            />
+            <div class="checkbox">
+              <label>
+                <input
+                  type="checkbox"
+                  name="header_subtitle__useMetadata"
+                  data-value-type="boolean"
+                  data-metadata-toggle
+                />
+                <%= i18n('use_metadata') %>
+              </label>
+              <div data-metadata-selector-container>
+                <select
+                  data-component="metadata-selector"
+                  name="header_subtitle__metadata"
+                ></select>
+                <small class="help-block"
+                  ><%= i18n('metadata_field_help') %></small
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -346,8 +877,8 @@
     </a>
     <div class="panel-collapse" id="pre-defined-question-panel">
       <div class="panel-body">
-        <div class="form-group">
-          <label>
+        <div class="form-group" data-metadata-field>
+          <label data-metadata-manual>
             <input
               type="checkbox"
               name="use_questions"
@@ -356,14 +887,55 @@
             />
             <%= i18n('use_pre_defined_questions') %>
           </label>
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="use_questions__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="use_questions__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
       </div>
       <div class="panel-body pre-defined-questions">
         <div class="row">
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('heading') %></label>
-              <input class="form-control" name="questions_title" />
+              <input
+                class="form-control"
+                name="questions_title"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="questions_title__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="questions_title__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
             <div class="form-group">
               <label><%= i18n('number_of_questions') %></label>
@@ -378,25 +950,145 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('question') %> 1</label>
-              <input class="form-control" name="question_1" />
+              <input
+                class="form-control"
+                name="question_1"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="question_1__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="question_1__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('question') %> 2</label>
-              <input class="form-control" name="question_2" />
+              <input
+                class="form-control"
+                name="question_2"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="question_2__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="question_2__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('question') %> 3</label>
-              <input class="form-control" name="question_3" />
+              <input
+                class="form-control"
+                name="question_3"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="question_3__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="question_3__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('question') %> 4</label>
-              <input class="form-control" name="question_4" />
+              <input
+                class="form-control"
+                name="question_4"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="question_4__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="question_4__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('question') %> 5</label>
-              <input class="form-control" name="question_5" />
+              <input
+                class="form-control"
+                name="question_5"
+                data-metadata-manual
+              />
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="question_5__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="question_5__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -417,13 +1109,55 @@
     </a>
     <div class="panel-collapse" id="assistant-readmore">
       <div class="panel-body">
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('readmore_description') %></label>
-          <input class="form-control" name="readmore_description" />
+          <input
+            class="form-control"
+            name="readmore_description"
+            data-metadata-manual
+          />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="readmore_description__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="readmore_description__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-metadata-field>
           <label><%= i18n('readmore_url') %></label>
-          <input class="form-control" name="readmore_url" />
+          <input
+            class="form-control"
+            name="readmore_url"
+            data-metadata-manual
+          />
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="readmore_url__useMetadata"
+                data-value-type="boolean"
+                data-metadata-toggle
+              />
+              <%= i18n('use_metadata') %>
+            </label>
+            <div data-metadata-selector-container>
+              <select
+                data-component="metadata-selector"
+                name="readmore_url__metadata"
+              ></select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -446,9 +1180,34 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group" data-metadata-field>
               <label><%= i18n('css') %></label>
-              <textarea class="form-control" name="css" rows="10"></textarea>
+              <textarea
+                class="form-control"
+                name="css"
+                rows="10"
+                data-metadata-manual
+              ></textarea>
+              <div class="checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="css__useMetadata"
+                    data-value-type="boolean"
+                    data-metadata-toggle
+                  />
+                  <%= i18n('use_metadata') %>
+                </label>
+                <div data-metadata-selector-container>
+                  <select
+                    data-component="metadata-selector"
+                    name="css__metadata"
+                  ></select>
+                  <small class="help-block"
+                    ><%= i18n('metadata_field_help') %></small
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
