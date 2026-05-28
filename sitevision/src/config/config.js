@@ -73,9 +73,10 @@ const updateQuestionFieldVisibility = (root, numberOfQuestions) => {
     const questionInput = root.querySelector(
       `input[name="question_${index + 1}"]`
     );
+    const questionField = questionInput?.closest(".form-group");
 
-    if (questionInput?.parentElement) {
-      questionInput.parentElement.hidden = index >= numberOfQuestions;
+    if (questionField) {
+      setElementVisibility(questionField, index < numberOfQuestions);
     }
   }
 };
@@ -89,18 +90,61 @@ const initializeQuestionFields = (root = document) => {
     return;
   }
 
+  const parseQuestionCount = (rawValue) => parseInt(rawValue || "0", 10) || 0;
   const getQuestionCount = () =>
-    parseInt(
-      questionCountInput.value ||
-        questionCountInput.getAttribute("value") ||
-        "0",
-      10
-    ) || 0;
+    parseQuestionCount(
+      questionCountInput.value || questionCountInput.getAttribute("value")
+    );
+  let currentQuestionCount = getQuestionCount();
 
-  updateQuestionFieldVisibility(root, getQuestionCount());
+  const syncQuestionFields = () => {
+    updateQuestionFieldVisibility(root, currentQuestionCount);
+  };
+  const handleQuestionCountUpdate = (event) => {
+    const nextValue = event?.target?.value;
 
-  questionCountInput.addEventListener("change", () => {
-    updateQuestionFieldVisibility(root, getQuestionCount());
+    if (nextValue !== undefined) {
+      questionCountInput.setAttribute("value", String(nextValue));
+      currentQuestionCount = parseQuestionCount(nextValue);
+    } else {
+      currentQuestionCount = getQuestionCount();
+    }
+
+    syncQuestionFields();
+  };
+  const syncQuestionFieldsFromInput = () => {
+    const nextQuestionCount = getQuestionCount();
+
+    if (nextQuestionCount === currentQuestionCount) {
+      return;
+    }
+
+    currentQuestionCount = nextQuestionCount;
+    syncQuestionFields();
+  };
+
+  syncQuestionFields();
+  questionCountInput.addEventListener("change", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("input", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("blur", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("keyup", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("click", handleQuestionCountUpdate);
+
+  const valueObserver = new MutationObserver(() => {
+    syncQuestionFieldsFromInput();
+  });
+  valueObserver.observe(questionCountInput, {
+    attributes: true,
+    attributeFilter: ["value"],
+  });
+
+  setInterval(syncQuestionFieldsFromInput, 150);
+
+  [0, 50, 150, 300].forEach((delay) => {
+    setTimeout(() => {
+      currentQuestionCount = getQuestionCount();
+      syncQuestionFields();
+    }, delay);
   });
 };
 

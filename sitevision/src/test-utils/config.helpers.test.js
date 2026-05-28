@@ -192,11 +192,12 @@ describe("config metadata fields", () => {
     );
 
     toggle.checked = true;
-    jest.runAllTimers();
+    jest.advanceTimersByTime(500);
 
     expect(manualInput.hidden).toBe(true);
     expect(selectorContainer.hidden).toBe(false);
 
+    jest.clearAllTimers();
     jest.useRealTimers();
   });
 });
@@ -227,7 +228,7 @@ describe("config question visibility", () => {
 
     initializeEnabledFields(document);
     initializeQuestionFields(document);
-    jest.runAllTimers();
+    jest.advanceTimersByTime(500);
 
     const questionsSection = document.querySelector(".pre-defined-questions");
     const question3 = document.querySelector('[name="question_3"]').parentElement;
@@ -235,6 +236,7 @@ describe("config question visibility", () => {
     expect(questionsSection.hidden).toBe(false);
     expect(question3.hidden).toBe(true);
 
+    jest.clearAllTimers();
     jest.useRealTimers();
   });
 
@@ -284,5 +286,105 @@ describe("config question visibility", () => {
     questionCount.dispatchEvent(new Event("change"));
 
     expect(question3.hidden).toBe(false);
+  });
+
+  test("keeps the changed question count instead of falling back to the original default", () => {
+    jest.useFakeTimers();
+
+    document.body.innerHTML = `
+      <div>
+        <input name="questions_count" value="3" />
+        <div class="form-group"><input name="question_1" /></div>
+        <div class="form-group"><input name="question_2" /></div>
+        <div class="form-group"><input name="question_3" /></div>
+        <div class="form-group"><input name="question_4" /></div>
+      </div>
+    `;
+
+    initializeQuestionFields(document);
+
+    const questionCount = document.querySelector('[name="questions_count"]');
+    const question3 = document.querySelector('[name="question_3"]').closest(".form-group");
+    const question4 = document.querySelector('[name="question_4"]').closest(".form-group");
+
+    expect(question3.hidden).toBe(false);
+    expect(question4.hidden).toBe(true);
+
+    questionCount.value = "2";
+    questionCount.dispatchEvent(new Event("change"));
+    questionCount.value = "";
+    jest.advanceTimersByTime(500);
+
+    expect(question3.hidden).toBe(true);
+    expect(question4.hidden).toBe(true);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  test("updates question visibility when the spinner value changes without a change event", () => {
+    jest.useFakeTimers();
+
+    document.body.innerHTML = `
+      <div>
+        <input name="questions_count" value="3" />
+        <div class="form-group"><input name="question_1" /></div>
+        <div class="form-group"><input name="question_2" /></div>
+        <div class="form-group"><input name="question_3" /></div>
+        <div class="form-group"><input name="question_4" /></div>
+      </div>
+    `;
+
+    initializeQuestionFields(document);
+    jest.advanceTimersByTime(500);
+
+    const questionCount = document.querySelector('[name="questions_count"]');
+    const question3 = document.querySelector('[name="question_3"]').closest(".form-group");
+    const question4 = document.querySelector('[name="question_4"]').closest(".form-group");
+
+    expect(question3.hidden).toBe(false);
+    expect(question4.hidden).toBe(true);
+
+    questionCount.value = "2";
+    jest.advanceTimersByTime(200);
+
+    expect(question3.hidden).toBe(true);
+    expect(question4.hidden).toBe(true);
+
+    jest.useRealTimers();
+  });
+
+  test("reapplies question visibility after delayed question count restore", () => {
+    jest.useFakeTimers();
+
+    document.body.innerHTML = `
+      <div>
+        <input name="questions_count" value="0" />
+        <div class="form-group"><input name="question_1" /></div>
+        <div class="form-group"><input name="question_2" /></div>
+        <div class="form-group"><input name="question_3" /></div>
+      </div>
+    `;
+
+    initializeQuestionFields(document);
+
+    const questionCount = document.querySelector('[name="questions_count"]');
+    const question1 = document.querySelector('[name="question_1"]').closest(".form-group");
+    const question2 = document.querySelector('[name="question_2"]').closest(".form-group");
+    const question3 = document.querySelector('[name="question_3"]').closest(".form-group");
+
+    expect(question1.hidden).toBe(true);
+    expect(question2.hidden).toBe(true);
+    expect(question3.hidden).toBe(true);
+
+    questionCount.value = "2";
+    jest.advanceTimersByTime(500);
+
+    expect(question1.hidden).toBe(false);
+    expect(question2.hidden).toBe(false);
+    expect(question3.hidden).toBe(true);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
   });
 });
