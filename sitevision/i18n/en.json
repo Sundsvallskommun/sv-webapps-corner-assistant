@@ -60,6 +60,7 @@
   "use_from_app": "Use app standard",
   "use_other": "Use other",
   "use_custom": "Use custom",
+  "use_metadata": "Use metadata",
   "use_assistant_titles": "Use assistant name and title",
 
   "show_name_in_feed": "Show name in chat feed",

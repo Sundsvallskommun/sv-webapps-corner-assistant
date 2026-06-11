@@ -61,6 +61,7 @@
   "use_from_app": "Använd appens standard",
   "use_other": "Använd annat",
   "use_custom": "Använd egen",
+  "use_metadata": "Använd metadata",
   "use_assistant_titles": "Använd assistentens namn och titel",
 
   "show_name_in_feed": "Visa namn i chatflöde",

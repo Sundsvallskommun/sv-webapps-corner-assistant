@@ -14,7 +14,7 @@ const setPanelState = (button, target, isExpanded) => {
   target.setAttribute("aria-expanded", String(isExpanded));
 };
 
-const initializeCollapsePanels = (root = document) => {
+export const initializeCollapsePanels = (root = document) => {
   Array.from(root.querySelectorAll('[data-toggle="collapse"]')).forEach(
     (button) => {
       const target = getTarget(root, button.getAttribute("data-target"));
@@ -81,10 +81,8 @@ const updateQuestionFieldVisibility = (root, numberOfQuestions) => {
   }
 };
 
-const initializeQuestionFields = (root = document) => {
-  const questionCountInput = root.querySelector(
-    'input[name="questions_count"]'
-  );
+export const initializeQuestionFields = (root = document) => {
+  const questionCountInput = root.querySelector('input[name="questions_count"]');
 
   if (!questionCountInput) {
     return;
@@ -170,7 +168,7 @@ const syncEnabledTargets = (root, inputName) => {
   });
 };
 
-const initializeEnabledFields = (root = document) => {
+export const initializeEnabledFields = (root = document) => {
   const handledNames = new Set();
 
   Array.from(root.querySelectorAll("input[data-enables]")).forEach((input) => {
@@ -213,7 +211,11 @@ const setElementVisibility = (element, isVisible) => {
   element.style.display = isVisible ? "" : "none";
 };
 
-const getManualElements = (fieldContainer, manualControl, metadataToggleContainer) => {
+const getManualElements = (
+  fieldContainer,
+  manualControl,
+  metadataToggleContainer
+) => {
   const manualElements = [manualControl];
   let sibling = manualControl.nextElementSibling;
 
@@ -228,8 +230,9 @@ const getManualElements = (fieldContainer, manualControl, metadataToggleContaine
 const applyMetadataFieldState = (fieldContainer) => {
   const manualControl = fieldContainer.querySelector("[data-metadata-manual]");
   const metadataToggle = fieldContainer.querySelector("[data-metadata-toggle]");
-  const metadataToggleContainer =
-    fieldContainer.querySelector(":scope > .checkbox");
+  const metadataToggleContainer = fieldContainer.querySelector(
+    ":scope > .checkbox"
+  );
   const metadataSelectorContainer = fieldContainer.querySelector(
     "[data-metadata-selector-container]"
   );
@@ -274,8 +277,9 @@ const initializeMetadataFieldLayout = (fieldContainer) => {
   }
 
   const manualControl = fieldContainer.querySelector("[data-metadata-manual]");
-  const metadataToggleContainer =
-    fieldContainer.querySelector(":scope > .checkbox");
+  const metadataToggleContainer = fieldContainer.querySelector(
+    ":scope > .checkbox"
+  );
 
   if (!manualControl || !metadataToggleContainer) {
     return;
@@ -290,8 +294,9 @@ const initializeMetadataFieldLayout = (fieldContainer) => {
         return generatedLabel;
       })()
     : fieldContainer.querySelector(":scope > label");
-  const metadataToggleLabel =
-    metadataToggleContainer.querySelector(":scope > label");
+  const metadataToggleLabel = metadataToggleContainer.querySelector(
+    ":scope > label"
+  );
   const metadataSelectorContainer = metadataToggleContainer.querySelector(
     "[data-metadata-selector-container]"
   );
@@ -322,7 +327,7 @@ const initializeMetadataFieldLayout = (fieldContainer) => {
   );
 };
 
-const initializeMetadataFields = (root = document) => {
+export const initializeMetadataFields = (root = document) => {
   Array.from(root.querySelectorAll("[data-metadata-field]")).forEach(
     (fieldContainer) => {
       const metadataToggle = fieldContainer.querySelector(
@@ -339,7 +344,6 @@ const initializeMetadataFields = (root = document) => {
         applyMetadataFieldState(fieldContainer);
       });
 
-      // Sitevision can restore checkbox values after the initial DOMContentLoaded pass.
       [0, 50, 150, 300].forEach((delay) => {
         setTimeout(() => {
           applyMetadataFieldState(fieldContainer);
@@ -348,20 +352,3 @@ const initializeMetadataFields = (root = document) => {
     }
   );
 };
-
-const initializeConfig = (root = document) => {
-  initializeCollapsePanels(root);
-  initializeEnabledFields(root);
-  initializeQuestionFields(root);
-  initializeMetadataFields(root);
-};
-
-if (typeof document !== "undefined") {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => initializeConfig(), {
-      once: true,
-    });
-  } else {
-    initializeConfig();
-  }
-}
