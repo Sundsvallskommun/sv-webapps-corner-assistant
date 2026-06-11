@@ -24,6 +24,10 @@ const createDeps = (overrides?: {
     properties: {
       get: (_node: Node, propertyName: string) => properties[propertyName],
     },
+    propertyUtil: {
+      getNode: (_node: Node, propertyName: string) =>
+        properties[propertyName] as Node,
+    },
     portletContextUtil: {
       getCurrentPage: () => page as Node,
     },
@@ -232,5 +236,26 @@ describe("resolveMetadataBackedNode", () => {
     );
 
     expect(value).toBe(metadataNode);
+  });
+
+  test("returns undefined when metadata node value is a string reference", () => {
+    const value = resolveMetadataBackedNode(
+      "assistant_avatar",
+      createDeps({
+        values: {
+          assistant_avatar__useMetadata: true,
+        },
+        nodes: {
+          assistant_avatar__metadata: {
+            getName: () => "avatarField",
+          } as unknown as Node,
+        },
+        properties: {
+          avatarField: "node-reference-string",
+        },
+      })
+    );
+
+    expect(value).toBeUndefined();
   });
 });

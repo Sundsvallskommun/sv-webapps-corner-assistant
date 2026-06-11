@@ -152,6 +152,9 @@ const syncEnabledTargets = (root, inputName) => {
   const controllerInputs = Array.from(
     root.querySelectorAll(`input[name="${inputName}"][data-enables]`)
   );
+  const metadataToggle = root.querySelector(
+    `input[name="${inputName}__useMetadata"][data-metadata-toggle]`
+  );
 
   controllerInputs.forEach((controllerInput) => {
     const target = getTarget(root, controllerInput.getAttribute("data-enables"));
@@ -160,7 +163,10 @@ const syncEnabledTargets = (root, inputName) => {
       return;
     }
 
-    setElementVisibility(target, controllerInput.checked);
+    setElementVisibility(
+      target,
+      controllerInput.checked || Boolean(metadataToggle?.checked)
+    );
   });
 };
 
@@ -174,6 +180,10 @@ const initializeEnabledFields = (root = document) => {
       return;
     }
 
+    const metadataToggle = root.querySelector(
+      `input[name="${inputName}__useMetadata"][data-metadata-toggle]`
+    );
+
     handledNames.add(inputName);
 
     const syncFieldTargets = () => {
@@ -185,6 +195,7 @@ const initializeEnabledFields = (root = document) => {
         relatedInput.addEventListener("change", syncFieldTargets);
       }
     );
+    metadataToggle?.addEventListener("change", syncFieldTargets);
 
     syncFieldTargets();
     [0, 50, 150, 300].forEach((delay) => {

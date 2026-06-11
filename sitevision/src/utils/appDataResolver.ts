@@ -1,6 +1,7 @@
 import type { Node } from "@sitevision/api/types/javax/jcr/Node";
 import appData from "@sitevision/api/server/appData";
 import portletContextUtil from "@sitevision/api/server/PortletContextUtil";
+import propertyUtil from "@sitevision/api/server/PropertyUtil";
 import properties from "@sitevision/api/server/Properties";
 import {
   resolveMetadataBackedBoolean,
@@ -11,6 +12,7 @@ import {
 const resolverDeps = {
   appData,
   properties,
+  propertyUtil,
   portletContextUtil,
 };
 

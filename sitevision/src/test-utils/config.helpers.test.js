@@ -240,6 +240,59 @@ describe("config question visibility", () => {
     jest.useRealTimers();
   });
 
+  test("shows predefined questions when metadata mode is enabled for use_questions", () => {
+    jest.useFakeTimers();
+
+    document.body.innerHTML = `
+      <div>
+        <div class="form-group" data-metadata-field>
+          <label data-metadata-manual>
+            <input
+              type="checkbox"
+              name="use_questions"
+              data-enables=".pre-defined-questions"
+            />
+            Use predefined questions
+          </label>
+          <div class="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                name="use_questions__useMetadata"
+                data-metadata-toggle
+                checked
+              />
+              Use metadata
+            </label>
+            <div data-metadata-selector-container>
+              <select name="use_questions__metadata"></select>
+            </div>
+          </div>
+        </div>
+        <div class="pre-defined-questions">
+          <input name="questions_count" value="2" />
+          <div class="form-group"><input name="question_1" /></div>
+          <div class="form-group"><input name="question_2" /></div>
+          <div class="form-group"><input name="question_3" /></div>
+        </div>
+      </div>
+    `;
+
+    initializeMetadataFields(document);
+    initializeEnabledFields(document);
+    initializeQuestionFields(document);
+    jest.advanceTimersByTime(500);
+
+    const questionsSection = document.querySelector(".pre-defined-questions");
+    const question3 = document.querySelector('[name="question_3"]').closest(".form-group");
+
+    expect(questionsSection.hidden).toBe(false);
+    expect(question3.hidden).toBe(true);
+
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   test("keeps question count visibility logic working with metadata enhancements", () => {
     document.body.innerHTML = `
       <div>

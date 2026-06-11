@@ -9,6 +9,10 @@ export interface PropertiesResolverSource {
   get(node: Node, propertyName: string): unknown;
 }
 
+export interface PropertyUtilResolverSource {
+  getNode(node: Node, propertyName: string, defaultValue: Node): Node;
+}
+
 export interface PortletContextResolverSource {
   getCurrentPage(): Node;
 }
@@ -16,6 +20,7 @@ export interface PortletContextResolverSource {
 export interface MetadataFieldResolverDeps {
   appData: AppDataResolverSource;
   properties: PropertiesResolverSource;
+  propertyUtil: PropertyUtilResolverSource;
   portletContextUtil: PortletContextResolverSource;
 }
 
@@ -145,6 +150,26 @@ const getMetadataValue = (
   return deps.properties.get(currentPage, metadataPropertyName);
 };
 
+const getMetadataNodeValue = (
+  fieldName: string,
+  deps: MetadataFieldResolverDeps
+): Node | undefined => {
+  const metadataFieldName = `${fieldName}__metadata`;
+  const currentPage = deps.portletContextUtil.getCurrentPage();
+  const metadataDefinition = deps.appData.getNode(metadataFieldName);
+  const metadataPropertyName = getMetadataFieldPropertyName(metadataDefinition);
+
+  if (!currentPage || !metadataPropertyName) {
+    return undefined;
+  }
+
+  return deps.propertyUtil.getNode(
+    currentPage,
+    metadataPropertyName,
+    undefined as unknown as Node
+  );
+};
+
 export const getMetadataFieldPropertyName = (
   metadataDefinition: unknown
 ): string | undefined => {
@@ -209,5 +234,5 @@ export const resolveMetadataBackedNode = (
     return deps.appData.getNode(fieldName);
   }
 
-  return toNode(getMetadataValue(fieldName, deps));
+  return toNode(getMetadataNodeValue(fieldName, deps));
 };
