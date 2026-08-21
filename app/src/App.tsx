@@ -12,7 +12,7 @@ import {
 } from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
-import type { Options } from "./types/shared";
+import type { Options } from "@shared";
 
 function App({
   user,
@@ -161,9 +161,9 @@ function App({
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.color}-surface-primary-DEFAULT)`
                   : options?.colors?.header?.color === "black"
-                    ? "var(--sk-colors-primitives-gray-900)"
-                    : options?.colors?.header?.background?.light ||
-                      "var(--sk-colors-primitives-gray-900)",
+                  ? "var(--sk-colors-primitives-gray-900)"
+                  : options?.colors?.header?.background?.light ||
+                    "var(--sk-colors-primitives-gray-900)",
 
                 text: {
                   primary:
@@ -245,9 +245,9 @@ function App({
                 )
                   ? `var(--sk-colors-${options?.colors?.header?.color}-surface-primary-DEFAULT)`
                   : options?.colors?.header?.color === "black"
-                    ? "var(--sk-colors-primitives-gray-100)"
-                    : options?.colors?.header?.background?.dark ||
-                      "var(--sk-colors-primitives-gray-100)",
+                  ? "var(--sk-colors-primitives-gray-100)"
+                  : options?.colors?.header?.background?.dark ||
+                    "var(--sk-colors-primitives-gray-100)",
 
                 text: {
                   primary:
@@ -267,8 +267,8 @@ function App({
               bubble: {
                 surface: defaultColors.includes(options?.colors?.bubble?.color)
                   ? `var(--sk-colors-${options?.colors?.bubble?.color}-surface-accent-DEFAULT)`
-                  : (options?.colors?.bubble?.surface.dark ??
-                    `var(--sk-colors-vattjom-surface-accent-DEFAULT)`),
+                  : options?.colors?.bubble?.surface.dark ??
+                    `var(--sk-colors-vattjom-surface-accent-DEFAULT)`,
                 "surface-hover": defaultColors.includes(
                   options?.colors?.bubble?.color,
                 )

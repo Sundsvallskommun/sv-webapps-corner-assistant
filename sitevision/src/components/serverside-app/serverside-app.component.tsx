@@ -1,7 +1,7 @@
 import type { AssistantInfo } from "@sk-web-gui/ai";
 import * as React from "react";
 import { AssistantDummie } from "../assistant-dummie/assistant-dummie.component";
-import type { Options } from "../../types/shared";
+import type { Options } from "@shared";
 
 export interface ServerSideAppProps {
   assistant: AssistantInfo;

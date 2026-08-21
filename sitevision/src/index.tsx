@@ -10,7 +10,7 @@ import * as React from "react";
 import { renderToString } from "react-dom/server";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
 import globalAppData from "@sitevision/api/server/globalAppData";
-import type { DefaultColor, Options } from "./types/shared";
+import type { DefaultColor, Options } from "@shared";
 import type { ColorSchemeMode } from "@sk-web-gui/react";
 import ReactHtmlParser from "react-html-parser";
 import { getHash } from "./utils/hash.service";
@@ -57,8 +57,7 @@ router.get("/", (_req, res) => {
   const localCss = getResolvedAppDataValue("css") || "";
   const resolvedAssistantId = getResolvedAppDataValue("assistantId") || "";
   const resolvedApp = getResolvedAppDataValue("app") || "";
-  const resolvedAppSessionId =
-    getResolvedAppDataValue("app_session_id") || "";
+  const resolvedAppSessionId = getResolvedAppDataValue("app_session_id") || "";
   const resolvedGroupChat = getResolvedAppDataBoolean("is_group_chat") || false;
   const resolvedRememberSession =
     getResolvedAppDataBoolean("remember_session") || false;
@@ -66,8 +65,7 @@ router.get("/", (_req, res) => {
     getResolvedAppDataBoolean("allow_fullscreen") || false;
   const resolvedShowHistory =
     getResolvedAppDataBoolean("show_history") || false;
-  const resolvedShowReferences =
-    getResolvedAppDataBoolean("show_references");
+  const resolvedShowReferences = getResolvedAppDataBoolean("show_references");
   const resolvedUseQuestions =
     getResolvedAppDataBoolean("use_questions") || false;
   const resolvedAssistantShowTitle =

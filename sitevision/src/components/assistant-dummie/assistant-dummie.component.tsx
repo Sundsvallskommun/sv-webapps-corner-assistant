@@ -1,12 +1,8 @@
-import {
-  AICornerModuleHeader,
-  type AICornerModule,
-  type AssistantInfo,
-} from "@sk-web-gui/ai";
+import { AICornerModuleHeader, type AssistantInfo } from "@sk-web-gui/ai";
 import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import { Avatar } from "@sk-web-gui/react";
-import { Options } from "../../types/shared";
+import type { Options } from "@shared";
 
 interface AssistantDummieProps {
   assistant: AssistantInfo;
