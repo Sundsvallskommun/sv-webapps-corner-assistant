@@ -3,18 +3,18 @@ import { Avatar } from "@sk-web-gui/react";
 import { useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { useAppSessions } from "../services/useAppSessions";
-import { Options } from "../types/shared";
+import { Options } from "@shared";
 
 export const Assistant: React.FC = () => {
   const options: Options = useAssistantStore(
-    (state) => state.options
+    (state) => state.options,
   ) as unknown as Options;
 
   const settings = useAssistantStore((state) => state.settings);
 
   const info = useAssistantStore((state) => state.info);
   const isMobile = useMediaQuery(
-    `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
+    `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`,
   );
   const rememberSession = options?.rememberSession || false;
   const appSessionId =
@@ -90,6 +90,7 @@ export const Assistant: React.FC = () => {
       questions={options?.questions}
       questionsTitle={options?.questionsTitle}
       showSessionHistory={options?.showHistory}
+      showReferences={options?.showReferences}
       title={options?.title}
       subtitle={options?.subtitle}
       disableFullscreen={options?.disableFullscreen}

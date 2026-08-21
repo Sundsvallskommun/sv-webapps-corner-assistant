@@ -23,6 +23,7 @@
   "use_shadow_dom": "Kör i shadow dom",
   "use_user": "Skicka med användarnamn",
   "show_history": "Visa tidigare frågor",
+  "show_references": "Visa referenser",
   "allow_fullscreen": "Tillåt att assistenten öppnas i fullskärmsläge",
   "styling": "Utseende",
   "css": "CSS",

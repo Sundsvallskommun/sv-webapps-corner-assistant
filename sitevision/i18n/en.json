@@ -23,6 +23,7 @@
   "use_shadow_dom": "Use shadow dom",
   "use_user": "Include username",
   "show_history": "Show history",
+  "show_references": "Show references",
   "allow_fullscreen": "Allow app to be opened in full screen",
   "styling": "Styling",
   "css": "CSS",
