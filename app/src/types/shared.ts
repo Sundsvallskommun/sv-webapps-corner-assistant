@@ -65,6 +65,7 @@ export interface Options {
   questions?: string[];
   questionsTitle?: string;
   showHistory?: boolean;
+  showReferences?: boolean;
   disableFullscreen?: boolean;
   colorscheme?: ColorSchemeMode;
 }

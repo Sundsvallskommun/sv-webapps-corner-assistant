@@ -66,6 +66,8 @@ router.get("/", (_req, res) => {
     getResolvedAppDataBoolean("allow_fullscreen") || false;
   const resolvedShowHistory =
     getResolvedAppDataBoolean("show_history") || false;
+  const resolvedShowReferences =
+    getResolvedAppDataBoolean("show_references");
   const resolvedUseQuestions =
     getResolvedAppDataBoolean("use_questions") || false;
   const resolvedAssistantShowTitle =
@@ -254,6 +256,7 @@ router.get("/", (_req, res) => {
     questions,
     questionsTitle: resolvedQuestionsTitle,
     showHistory,
+    showReferences: resolvedShowReferences,
     mobileBreakpoint,
     colors: { header, bubble },
     assistant: assistantOptions,

@@ -90,6 +90,7 @@ export const Assistant: React.FC = () => {
       questions={options?.questions}
       questionsTitle={options?.questionsTitle}
       showSessionHistory={options?.showHistory}
+      showReferences={options?.showReferences}
       title={options?.title}
       subtitle={options?.subtitle}
       disableFullscreen={options?.disableFullscreen}
