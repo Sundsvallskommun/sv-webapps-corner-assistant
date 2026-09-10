@@ -94,6 +94,7 @@ export const Assistant: React.FC = () => {
       title={options?.title}
       subtitle={options?.subtitle}
       disableFullscreen={options?.disableFullscreen}
+      inlineReferenceMode="inline"
       readmore={options?.readmore}
       avatars={{
         user: userAvatar,
