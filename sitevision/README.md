@@ -1,5 +1,11 @@
 # Corner assistant - Sitevision webapp
 
+## Editor documentation
+
+The Swedish guide for adding, configuring, testing, and troubleshooting the
+web app in Sitevision is available in
+[Redaktörsguide för Corner assistant](../docs/redaktorsguide-sitevision.md).
+
 ## Developing
 
 Create `.dev_properties.json` with your environment settings.

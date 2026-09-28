@@ -3,6 +3,11 @@
 Tillägg till Sitevision.
 AI-assistent som kan köras i hörn eller fullskärm, likt en klassisk chatbot.
 
+## Dokumentation
+
+För instruktioner om hur modulen läggs till, konfigureras och felsöks i
+Sitevision, se [Redaktörsguide för Corner assistant](docs/redaktorsguide-sitevision.md).
+
 ## /app
 
 React app.
